@@ -1,3 +1,12 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: "TikTok Sans", sans-serif;
+}
+body {
+  margin: 3rem auto;
+  max-width: 700px;
+  line-height: 1.5;
+  font-size: 1rem;
+  color: #444;
+  padding: 0 1rem;
 }
