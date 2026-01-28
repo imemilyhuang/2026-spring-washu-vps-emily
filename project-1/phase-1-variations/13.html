@@ -1,0 +1,675 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>13.html - La Bonne Bouchee Menu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Edu+SA+Hand:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --heading-blue: #1f4e79;
+        --heading-red: #b23a48;
+      }
+
+      body {
+        font-family: "Edu SA Hand", cursive;
+        letter-spacing: 0.02em;
+        margin: 0;
+        padding: 2.5rem 1.25rem 4rem;
+        color: #2c3e50;
+        background: #ffffff;
+      }
+
+      .container {
+        max-width: 980px;
+        margin: 0 auto;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 1.75rem;
+      }
+
+      header h1 {
+        font-size: 4em;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        line-height: 1.2;
+        margin: 0 0 0.35rem;
+        color: var(--heading-blue);
+      }
+
+      header p {
+        margin: 0 auto;
+        max-width: 58ch;
+        font-style: italic;
+        font-weight: 400;
+        letter-spacing: 0.03em;
+        line-height: 1.6;
+        text-align: center;
+        color: #7f8c8d;
+      }
+
+      .section-title {
+        font-size: 2.5em;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        line-height: 1.3;
+        text-align: center;
+        color: var(--heading-red);
+        margin: 2.25rem 0 0.35rem;
+      }
+
+      .section-description {
+        margin: 0 0 1.25rem;
+        font-weight: 400;
+        letter-spacing: 0.03em;
+        line-height: 1.8;
+        text-align: center;
+        font-style: italic;
+        color: #7f8c8d;
+      }
+
+      h3 {
+        font-size: 1.6em;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        line-height: 1.5;
+        text-align: left;
+        color: var(--heading-blue);
+        margin: 1.5rem 0 0.75rem;
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin: 1.25rem 0 2rem;
+      }
+
+      .info-card {
+        border: 1px solid rgba(52, 73, 94, 0.14);
+        background: rgba(127, 140, 141, 0.06);
+        padding: 1rem;
+      }
+
+      .info-card h3 {
+        margin: 0 0 0.65rem;
+        text-align: center;
+      }
+
+      .info-card table {
+        width: min(640px, 100%);
+        margin: 0 auto;
+        border-collapse: collapse;
+        font-size: 0.98em;
+      }
+
+      .info-card td {
+        padding: 0.35rem 0.5rem;
+        vertical-align: top;
+        text-align: center;
+      }
+
+      .info-card td:first-child {
+        font-weight: 600;
+        width: 45%;
+      }
+
+      .info-card td:last-child {
+        width: 55%;
+      }
+
+      a {
+        color: var(--heading-red);
+      }
+
+      .dish-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.1rem 1.6rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .dish {
+        padding: 0.75rem 0.85rem;
+        border: 1px solid rgba(52, 73, 94, 0.14);
+        background: rgba(127, 140, 141, 0.06);
+      }
+
+      .dish-title {
+        display: block;
+        font-weight: 650;
+        letter-spacing: 0.03em;
+        line-height: 1.35;
+        color: #2c3e50;
+        margin-bottom: 0.5rem;
+      }
+
+      .dish-description {
+        display: block;
+        font-style: italic;
+        font-weight: 400;
+        letter-spacing: 0.02em;
+        line-height: 1.45;
+        color: #6f7c7d;
+        margin-bottom: 1rem;
+      }
+
+      .dish-price {
+        display: block;
+        font-weight: 650;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #34495e;
+      }
+
+      .note {
+        margin: -0.25rem 0 1.25rem;
+        color: #7f8c8d;
+        font-style: italic;
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>La Bonne Bouchee</h1>
+        <p style="width: 60%; margin-top: 1rem; margin-bottom: 2rem">
+          Cozy locale with a parisian theme offering french entrees, wine, & a wide range of classic
+          confections.
+        </p>
+      </header>
+
+      <section class="info-grid" aria-label="Restaurant information">
+        <div class="info-card">
+          <h3>Overview</h3>
+          <table>
+            <tr>
+              <td>Address</td>
+              <td>12344 Olive Blvd, Creve Coeur, MO 63141</td>
+            </tr>
+            <tr>
+              <td>Phone</td>
+              <td>(314) 576-6606</td>
+            </tr>
+            <tr>
+              <td>Website</td>
+              <td><a href="https://labonnebouchee.com">labonnebouchee.com</a></td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="info-card">
+          <h3>Restaurant Hours</h3>
+          <table>
+            <tr>
+              <td>Sunday</td>
+              <td>8:00 AM - 2:30 PM</td>
+            </tr>
+            <tr>
+              <td>Monday - Saturday</td>
+              <td>7:30 AM - 2:30 PM</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="info-card">
+          <h3>Bakery &amp; Cafe Hours</h3>
+          <table>
+            <tr>
+              <td>Sunday</td>
+              <td>8:00 AM - 4:00 PM</td>
+            </tr>
+            <tr>
+              <td>Monday</td>
+              <td>7:00 AM - 6:30 PM</td>
+            </tr>
+            <tr>
+              <td>Tuesday - Saturday</td>
+              <td>7:00 AM - 8:30 PM</td>
+            </tr>
+          </table>
+        </div>
+      </section>
+      <br />
+
+      <section>
+        <h2 class="section-title">Breakfast Menu</h2>
+        <p class="section-description">
+          <strong>HOURS:</strong> Monday - Friday: 7:00 AM - 10:45 AM | Saturday &amp; Sunday: All Day
+        </p>
+
+        <h3>A La Carte</h3>
+        <div class="dish-grid">
+          <div class="dish">
+            <span class="dish-title">Two Eggs Any Style</span>
+            <span class="dish-description">Poached, over easy/medium/hard, sunny side up, or scrambled</span>
+            <span class="dish-price">$6.49</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">The Continental</span>
+            <span class="dish-description"
+              >Breakfast pastry** or fresh fruit cup with jam, butter, juice, &amp; coffee</span
+            >
+            <span class="dish-price">$13.99</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">The Traditional</span>
+            <span class="dish-description"
+              >Two eggs any style, fruit cup, breakfast pastry**, jam, butter, juice, &amp; coffee</span
+            >
+            <span class="dish-price">$16.99</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Frittata</span>
+            <span class="dish-description"
+              >Open-faced omelette with bacon, cheddar, &amp; rosemary roasted potatoes</span
+            >
+            <span class="dish-price">$14.49</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Vegetarian Frittata</span>
+            <span class="dish-description"
+              >Open-faced omelette with spinach, tomatoes, &amp; swiss cheese</span
+            >
+            <span class="dish-price">$14.49</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Quiche Lorraine</span>
+            <span class="dish-description">With smoked ham, bacon, &amp; swiss cheese</span>
+            <span class="dish-price">$10.99</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Quiche du Jour</span>
+            <span class="dish-description">Ask your server about today's selections</span>
+            <span class="dish-price">$10.99</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Eggs Benedict</span>
+            <span class="dish-description"
+              >Poached eggs, canadian bacon, hollandaise, english muffin, roasted potatoes</span
+            >
+            <span class="dish-price">$18.49</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Pancakes</span>
+            <span class="dish-description"
+              >Four pancakes topped with fresh berries, bananas, &amp; whipped cream</span
+            >
+            <span class="dish-price">$14.49 | Simple $10.49</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Belgian Waffle</span>
+            <span class="dish-description"
+              >Homemade waffle topped with fresh berries, bananas, &amp; whipped cream</span
+            >
+            <span class="dish-price">$14.49 | Simple $10.49</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Junior Pancakes</span>
+            <span class="dish-description"
+              >Two pancakes with berries, bananas, &amp; whipped cream + two sausage links &amp; a drink</span
+            >
+            <span class="dish-price">$9.99 | Simple $7.49</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">French Toast</span>
+            <span class="dish-description">Two slices of french toast</span>
+            <span class="dish-price">$8.99</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Simple Omelette</span>
+            <span class="dish-description">Served with rosemary roasted potatoes. Add cheese +$1.99</span>
+            <span class="dish-price">$10.99</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Create Your Own Omelette</span>
+            <span class="dish-description">
+              Fillings: ham, bacon, sausage, swiss, cheddar, feta, peppers, spinach, mushrooms, tomatoes,
+              onions (choice of 3). Each additional topping +$1.99. Served with rosemary roasted potatoes.
+            </span>
+            <span class="dish-price">$13.99</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Fresh Seasonal Fruit</span>
+            <span class="dish-description">Fresh fruit served as a bowl or cup</span>
+            <span class="dish-price">Bowl $7.99 | Cup $5.99</span>
+          </div>
+        </div>
+        <br />
+
+        <h3>Fresh Pastries**</h3>
+        <p class="note">++ Additional charges apply. Price varies by item.</p>
+        <div class="dish-grid">
+          <div class="dish">
+            <span class="dish-title">Filled Croissants</span>
+            <span class="dish-description">
+              Almond (mini or regular) ++, apple, apricot, bacon egg &amp; cheese ++, broccoli mushroom &amp;
+              swiss ++, classic butter, cherry, chocolate (mini or regular) ++, cream cheese, ham &amp; swiss
+              ++, lemon cream cheese, raspberry, salted caramel, spinach &amp; feta ++, spinach &amp; ricotta
+              ++, strawberry cream cheese
+            </span>
+            <span class="dish-price">Price varies</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Specialty Pastries</span>
+            <span class="dish-description">
+              Apple feuillete, assorted muffins, cinnamon cream cheese danish, cinnamon pecan roll, cinnamon
+              roll, cinnamon twist, cronish, danish, palmiers, turnover (apple or cherry)
+            </span>
+            <span class="dish-price">Price varies</span>
+          </div>
+        </div>
+        <br />
+        <h3>Breakfast Sandwiches</h3>
+        <p class="note">
+          Served on your choice of a biscuit, croissant, toast or english muffin. Add cheese +$1.49 | add egg
+          +$2.49.
+        </p>
+        <div class="dish-grid">
+          <div class="dish">
+            <span class="dish-title">Bacon &amp; Egg</span>
+            <span class="dish-description">Classic bacon with a warm egg—simple, crisp, &amp; savory</span>
+            <span class="dish-price">$8.49</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Sausage &amp; Egg</span>
+            <span class="dish-description">Hearty sausage with egg for a richer, breakfast-forward bite</span>
+            <span class="dish-price">$8.49</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Ham &amp; Egg</span>
+            <span class="dish-description">Smoky ham paired with egg—balanced &amp; satisfying</span>
+            <span class="dish-price">$8.49</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Egg &amp; Cheese</span>
+            <span class="dish-description">A lighter classic—egg with melty cheese on your chosen bread</span>
+            <span class="dish-price">$6.49</span>
+          </div>
+        </div>
+        <br />
+        <h3>Sides</h3>
+        <div class="dish-grid">
+          <div class="dish">
+            <span class="dish-title">Meats</span>
+            <span class="dish-description"
+              >Choice of bacon (4), sausage links (4), sausage patties (2), ham slices (3)</span
+            >
+            <span class="dish-price">$5.49</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Toast</span>
+            <span class="dish-description">Choice of rye, 9-grain, or white</span>
+            <span class="dish-price">$3.49</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Rosemary Roasted Potatoes</span>
+            <span class="dish-description">Crisp-edged potatoes with rosemary</span>
+            <span class="dish-price">$5.49</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Biscuit &amp; Gravy</span>
+            <span class="dish-description">Warm biscuit with a savory gravy pour</span>
+            <span class="dish-price">$5.49</span>
+          </div>
+        </div>
+      </section>
+      <section>
+        <br />
+        <h2 class="section-title">Lunch Menu</h2>
+        <p class="section-description"><strong>HOURS:</strong> Daily: 10:45 AM - 2:30 PM</p>
+        <br />
+        <h3>Salads</h3>
+        <p class="note">
+          Dressings: original house (dijon vinaigrette), lemon-balsamic, raspberry vinaigrette, buttermilk
+          ranch, caesar, bleu cheese.
+        </p>
+        <div class="dish-grid">
+          <div class="dish">
+            <span class="dish-title">Salade Maison</span>
+            <span class="dish-description">
+              Mixed greens, tomatoes, carrots, cucumbers, hearts of palm, &amp; croutons. Served with your
+              choice of dressing
+            </span>
+            <span class="dish-price">$10.49</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Salade Nicoise</span>
+            <span class="dish-description">
+              Field greens, albacore tuna, potatoes, bell peppers, red onions, tomatoes, hard-boiled eggs,
+              nicoise olives, &amp; anchovies with lemon-balsamic dressing
+            </span>
+            <span class="dish-price">Full $22.99 | Petite $16.49</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Bay Shrimp Salad</span>
+            <span class="dish-description">
+              Mixed greens, napa cabbage, chow mein noodles, shrimp, bell peppers, carrots, red onions, snow
+              pea pods, &amp; toasted almonds with oriental vinaigrette
+            </span>
+            <span class="dish-price">Full $22.99 | Petite $16.49</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Vegetarian Salad</span>
+            <span class="dish-description">
+              Baby spinach, seasonal berries, red grapes, mandarin oranges, toasted walnuts, red onions, &amp;
+              grated asiago with raspberry vinaigrette
+            </span>
+            <span class="dish-price">Full $20.49 | Petite $15.99</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Mediterranean Chicken Salad</span>
+            <span class="dish-description">
+              Grilled chicken, mixed greens, artichoke hearts, roasted red peppers, red onions, cucumbers,
+              tomatoes, feta, &amp; croutons with lemon-balsamic dressing
+            </span>
+            <span class="dish-price">Full $20.49 | Petite $15.99</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">La Bonne Bouchee Chicken Salad</span>
+            <span class="dish-description">
+              Homemade chicken salad over mixed greens with tomatoes, cucumber &amp; carrots. Served with your
+              choice of dressing
+            </span>
+            <span class="dish-price">Full $19.49 | Petite $15.99</span>
+          </div>
+        </div>
+        <br />
+        <h3>Soups</h3>
+        <div class="dish-grid">
+          <div class="dish">
+            <span class="dish-title">La Bonne Bouchee French Onion</span>
+            <span class="dish-price">Bowl $9.99 | Cup $6.99</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Soup Du Jour</span>
+            <span class="dish-price">Bowl $8.49 | Cup $6.99</span>
+          </div>
+        </div>
+        <br />
+        <h3>Entrees</h3>
+        <p class="note">Served with your choice of soup du jour, french onion soup, or side salad.</p>
+        <div class="dish-grid">
+          <div class="dish">
+            <span class="dish-title">Quiche Lorraine</span>
+            <span class="dish-description"
+              >Smoked ham, bacon, &amp; swiss cheese. Served with vegetable du jour</span
+            >
+            <span class="dish-price">Full $15.49 | Half $12.49</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Quiche du Jour</span>
+            <span class="dish-description"
+              >Ask us about available selections! Served with vegetable du jour</span
+            >
+            <span class="dish-price">Full $15.49 | Half $12.49</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Le Croque Monsieur</span>
+            <span class="dish-description">
+              Grilled ham &amp; swiss with dijon on white bread, topped with creamy bechamel sauce
+            </span>
+            <span class="dish-price">$16.99</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Croissant au Jambon et Fromage</span>
+            <span class="dish-description"
+              >Ham &amp; swiss on a butter croissant topped with creamy bechamel sauce</span
+            >
+            <span class="dish-price">$15.99</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Bay Shrimp Pasta</span>
+            <span class="dish-description">
+              Shrimp, farfalle, tomatoes, artichokes, kalamata olives, &amp; garlic in tomato fennel sauce
+              with asiago
+            </span>
+            <span class="dish-price">$22.99</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Les Crepes aux Fruits de Mer et Aux Epinards</span>
+            <span class="dish-description"
+              >Baked crepes with shrimp, crab, &amp; spinach + tarragon lobster &amp; mornay sauce</span
+            >
+            <span class="dish-price">Full $20.99 | Half $13.49</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">La Bouchee aux Crevettes</span>
+            <span class="dish-description">
+              Puff pastry shell with shrimp, mushrooms, carrots, &amp; asparagus in a tarragon lobster sauce
+            </span>
+            <span class="dish-price">$21.99</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Le Vol au Vent</span>
+            <span class="dish-description">
+              Puff pastry shell with grilled chicken breast &amp; mushrooms in supreme sauce. Served with
+              vegetable du jour
+            </span>
+            <span class="dish-price">$19.49</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Sauteed Salmon</span>
+            <span class="dish-description">
+              Atlantic salmon with basil pesto butter, white &amp; wild rice blend. Served with vegetable du
+              jour
+            </span>
+            <span class="dish-price">$21.99</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Baked Chicken Breast</span>
+            <span class="dish-description">
+              Oven-baked chicken with cream sauce, sauteed mushrooms &amp; broccoli. Served with white &amp;
+              wild rice blend
+            </span>
+            <span class="dish-price">$21.99</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Simple Omelette</span>
+            <span class="dish-description">Served with vegetable du jour. Add cheese +$1.49</span>
+            <span class="dish-price">$13.99</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Create Your Own Lunch Omelette</span>
+            <span class="dish-description">
+              Toppings: ham, bacon, sausage, peppers, spinach, tomatoes, mushrooms, onions, cheddar, feta,
+              swiss (choice of 3). Additional toppings +$1.99 | egg whites +$1.99. Served with vegetable du
+              jour.
+            </span>
+            <span class="dish-price">$17.99</span>
+          </div>
+        </div>
+        <br />
+        <h3>Sandwiches</h3>
+        <p class="note">
+          Served with a bowl of fresh fruit or chips. Bread: swirled rye, nine grain, butter croissant,
+          ciabatta.
+        </p>
+        <div class="dish-grid">
+          <div class="dish">
+            <span class="dish-title">La Bonne Bouchee Classic Chicken Salad</span>
+            <span class="dish-description">
+              Grilled chicken, toasted almonds, hard-boiled eggs, lettuce, tomato, diced pickles, &amp; celery
+              on your choice of bread
+            </span>
+            <span class="dish-price">$16.49</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Vegetable Sandwich</span>
+            <span class="dish-description">
+              Spinach, tomatoes, red onions, dill havarti, hummus, &amp; nicoise olive tapenade on your choice
+              of bread
+            </span>
+            <span class="dish-price">$13.49</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">La Salade de Thon</span>
+            <span class="dish-description">
+              Albacore tuna, chopped hard-boiled eggs, lettuce, tomato, &amp; diced pickles on your choice of
+              bread
+            </span>
+            <span class="dish-price">$16.49</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Slow-Roasted Top Round of Boeuf</span>
+            <span class="dish-description">
+              Sliced roast beef, smoked gouda, side horseradish. Served hot—simmered in french onion soup on
+              ciabatta
+            </span>
+            <span class="dish-price">$16.99</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Smoked Turkey Breast</span>
+            <span class="dish-description">
+              Smoked turkey, provolone, lettuce, tomatoes, &amp; avocado mayonnaise on your choice of bread
+            </span>
+            <span class="dish-price">$16.49</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Choose Two</span>
+            <span class="dish-description">
+              Your choice of two: half sandwich, fresh fruit cup, cup french onion soup, cup soup du jour,
+              side salad
+            </span>
+            <span class="dish-price">$14.99</span>
+          </div>
+        </div>
+        <br />
+        <h3>Children's Menu</h3>
+        <p class="note">
+          Includes a small drink &amp; fresh fruit cup or chips. Available to adults at additional charge.
+        </p>
+        <div class="dish-grid">
+          <div class="dish">
+            <span class="dish-title">Toasted Cheddar Cheese</span>
+            <span class="dish-price">$8.99</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Deli Sliced Turkey Sandwich</span>
+            <span class="dish-price">$8.99</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Peanut Butter &amp; Jelly</span>
+            <span class="dish-price">$8.99</span>
+          </div>
+          <div class="dish">
+            <span class="dish-title">Bow Tie Pasta</span>
+            <span class="dish-description">Tossed in butter &amp; parmesan cheese</span>
+            <span class="dish-price">$8.99</span>
+          </div>
+        </div>
+        <br />
+      </section>
+    </main>
+  </body>
+</html>
