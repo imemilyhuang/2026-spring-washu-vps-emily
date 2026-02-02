@@ -1,0 +1,533 @@
+:root {
+  --royal: #0b1f6b;
+  --red: #d72638;
+  --white: #ffffff;
+  --ink: #0f172a;
+  --muted: #475569;
+  --cream: #fff9f3;
+  --overlay: rgba(11, 31, 107, 0.82);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Source Sans 3", sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--royal);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--white);
+}
+
+.brand a {
+  color: inherit;
+  text-decoration: none;
+  transition:
+    opacity 0.3s ease,
+    transform 0.25s ease;
+}
+
+.brand a:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.5rem;
+}
+
+.nav-links a {
+  color: rgba(255, 255, 255, 0.95);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.5rem 0.75rem;
+  transition:
+    color 0.3s ease,
+    background 0.3s ease,
+    transform 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.hero {
+  position: relative;
+  min-height: 42vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.hero.home {
+  background-image: url("../images/project-1/blurred-interior.png");
+}
+
+.hero.breakfast {
+  background-image: url("../images/project-1/lbb-breakfast-croissants.jpg");
+}
+
+.hero.lunch {
+  background-image: url("../images/project-1/lbb-lunch-sandwiches.jpg");
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--overlay);
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 2rem;
+}
+
+.hero img {
+  height: 100px;
+  width: auto;
+  filter: brightness(0) invert(1);
+}
+
+.hero-tagline {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.95);
+  margin-top: 0.75rem;
+}
+
+.hero-heading {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 5rem;
+  color: rgba(255, 255, 255, 0.95);
+  margin-top: 0.75rem;
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  flex: 1;
+  min-width: 0;
+}
+
+/* landing page: menu section rows */
+.menu-section-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  width: 100%;
+}
+
+.menu-section-row {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1.5rem;
+  background: var(--white);
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(11, 31, 107, 0.08);
+}
+
+@media (min-width: 640px) {
+  .menu-section-row {
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+  }
+}
+
+.menu-section-content {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.menu-section-title {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--royal);
+  margin: 0;
+}
+
+.menu-section-hours {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0 0 0.25rem 0;
+}
+
+.menu-section-btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-family: "Source Sans 3", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--white);
+  background: var(--red);
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    transform 0.2s ease;
+}
+
+.menu-section-btn:hover {
+  background: #b91f2e;
+  transform: translateY(-2px);
+}
+
+.menu-section-image {
+  flex-shrink: 0;
+  width: 100%;
+  min-height: 220px;
+}
+
+@media (min-width: 640px) {
+  .menu-section-image {
+    width: 45%;
+    min-width: 280px;
+    min-height: 200px;
+  }
+}
+
+.menu-section-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  object-fit: cover;
+}
+
+@media (min-width: 640px) {
+  .menu-section-image img {
+    min-height: 200px;
+  }
+}
+
+/* menu pages: accordion and dish list */
+.menu-column {
+  min-width: 0;
+}
+
+.menu-accordion {
+  width: 100%;
+  margin-bottom: 1.75rem;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(11, 31, 107, 0.08);
+  background: var(--white);
+}
+
+@media (min-width: 900px) {
+  .menu-accordion {
+    width: 840px;
+    min-width: 840px;
+  }
+}
+
+.menu-accordion details {
+  width: 100%;
+  border-bottom: 1px solid rgba(11, 31, 107, 0.08);
+}
+
+.menu-accordion details:last-child {
+  border-bottom: none;
+}
+
+.menu-accordion summary {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--royal);
+  padding: 1.5rem 2rem;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition:
+    background 0.3s ease,
+    color 0.2s ease;
+  user-select: none;
+}
+
+.menu-accordion summary::after {
+  content: "+";
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--red);
+  transition: transform 0.3s ease;
+}
+
+.menu-accordion details[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.menu-accordion summary:hover {
+  background: rgba(11, 31, 107, 0.05);
+}
+
+.accordion-content {
+  padding: 0 2rem 2rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.dish-list {
+  list-style: none;
+}
+
+.dish-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 1.5rem 0.5rem;
+  border-bottom: 1px solid rgba(11, 31, 107, 0.06);
+  transition: background 0.25s ease;
+}
+
+.dish-item:last-child {
+  border-bottom: none;
+}
+
+.dish-item:hover {
+  background: rgba(215, 38, 56, 0.04);
+}
+
+.dish-content {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+
+.dish-name {
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--royal);
+  margin-bottom: 0.25rem;
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+  transform-origin: left center;
+}
+
+.dish-item:hover .dish-name {
+  color: var(--red);
+  transform: scale(1.05);
+}
+
+.dish-description {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.dish-price {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--red);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+  transform-origin: right center;
+}
+
+.dish-item:hover .dish-price {
+  transform: scale(1.05);
+}
+
+.pastry-group {
+  margin-bottom: 1.5rem;
+}
+
+.pastry-group:last-child {
+  margin-bottom: 0;
+}
+
+.pastry-category {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--royal);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.pastry-items {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.menu-column section {
+  width: 100%;
+}
+
+.section-title {
+  font-family: "Playfair Display", serif;
+  font-size: 2.5rem;
+  color: var(--royal);
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--red);
+  margin-bottom: 1.5rem;
+}
+
+.subsection-note {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+/* footer */
+footer {
+  background: var(--royal);
+  color: var(--white);
+  padding: 2.5rem 1.5rem;
+  margin-top: 3rem;
+}
+
+.footer-grid {
+  max-width: 800px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+}
+
+@media (min-width: 700px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 699px) {
+  .footer-grid {
+    gap: 1.5rem;
+  }
+}
+
+.footer-map-wrap {
+  overflow: hidden;
+}
+
+.footer-map-wrap iframe {
+  display: block;
+  width: 100%;
+  height: 350px;
+  border: 0;
+}
+
+.footer-info h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.footer-info p,
+.footer-info a {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+}
+
+.footer-info a:hover {
+  text-decoration: underline;
+}
+
+/* responsive */
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  .nav-links {
+    justify-content: center;
+  }
+  .hero {
+    min-height: 35vh;
+  }
+  .hero img {
+    max-height: 60px;
+  }
+  .main-grid {
+    padding: 1.5rem 1rem;
+  }
+  .menu-accordion summary {
+    font-size: 1.15rem;
+    padding: 1rem 1.25rem;
+  }
+  .accordion-content {
+    padding: 0 1.25rem 1.25rem;
+  }
+  .dish-item {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}
