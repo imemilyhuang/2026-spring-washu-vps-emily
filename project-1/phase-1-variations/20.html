@@ -1,0 +1,834 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>20.html - la bonne bouchee | final menu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Edu+SA+Hand:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --royal: #0b1f6b;
+        --red: #d72638;
+        --white: #ffffff;
+        --ink: #0f172a;
+        --muted: #475569;
+        --cream: #fff9f3;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Edu SA Hand", cursive;
+        font-size: 12px;
+        background: var(--cream);
+        color: var(--ink);
+        line-height: 1.6;
+        min-height: 100vh;
+        text-transform: lowercase;
+      }
+
+      .split-layout {
+        display: grid;
+        grid-template-columns: 260px 1fr;
+        min-height: 100vh;
+      }
+
+      /* sidebar */
+      .sidebar {
+        background: var(--royal);
+        color: var(--white);
+        padding: 2rem 1.25rem;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow-y: auto;
+      }
+
+      .sidebar-brand {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .sidebar-brand img {
+        height: 50px;
+        width: auto;
+        filter: brightness(0) invert(1);
+        display: block;
+      }
+
+      .nav-group {
+        margin-bottom: 3rem;
+      }
+
+      .nav-group-title {
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 0.75rem;
+      }
+
+      .nav-link {
+        display: block;
+        color: rgba(255, 255, 255, 0.9);
+        text-decoration: none;
+        padding: 0.5rem 0;
+        font-size: 1.1rem;
+        transition:
+          color 0.3s ease,
+          padding-left 0.3s ease;
+        cursor: pointer;
+        border: none;
+        background: none;
+        width: 100%;
+        text-align: left;
+        font-family: inherit;
+      }
+
+      .nav-link:hover {
+        color: var(--white);
+      }
+
+      .nav-link.active {
+        color: var(--white);
+        font-weight: 700;
+        border-left: 3px solid var(--red);
+      }
+
+      .nav-sublink {
+        padding-left: 1rem;
+        font-size: 1rem;
+      }
+
+      .nav-sublink:hover {
+        padding-left: 1.5rem;
+      }
+
+      .nav-sublink.active {
+        padding-left: 1rem;
+      }
+
+      /* content area */
+      .content-area {
+        position: relative;
+        overflow: hidden;
+        background: var(--cream);
+      }
+
+      .content-panel {
+        position: absolute;
+        inset: 0;
+        padding: 2rem 2.5rem;
+        overflow-y: auto;
+        opacity: 0;
+        visibility: hidden;
+        transition:
+          opacity 0.4s ease,
+          visibility 0.4s ease;
+      }
+
+      .content-panel.active {
+        position: relative;
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .panel-title {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--royal);
+        margin-bottom: 0.5rem;
+      }
+
+      .panel-subtitle {
+        color: var(--muted);
+        margin-bottom: 1.5rem;
+        font-size: 1rem;
+      }
+
+      .dish-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 1.5rem;
+        padding: 1rem 0;
+        border-bottom: 1px solid rgba(11, 31, 107, 0.08);
+        transition: background 0.25s ease;
+      }
+
+      .dish-item:last-child {
+        border-bottom: none;
+      }
+
+      .dish-item:hover {
+        background: rgba(11, 31, 107, 0.03);
+      }
+
+      .dish-name {
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: var(--royal);
+      }
+
+      .dish-description {
+        font-size: 1rem;
+        color: var(--muted);
+        margin-top: 0.2rem;
+      }
+
+      .dish-price {
+        font-weight: 700;
+        font-size: 1rem;
+        color: var(--white);
+        background: var(--royal);
+        padding: 0.25rem 0.6rem;
+        border-radius: 6px;
+        white-space: nowrap;
+      }
+
+      .panel-note {
+        font-size: 0.95rem;
+        color: var(--muted);
+        font-style: italic;
+        margin-bottom: 1rem;
+      }
+
+      .pastry-group {
+        margin-bottom: 1.25rem;
+      }
+
+      .pastry-category {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--royal);
+        margin-bottom: 0.4rem;
+      }
+
+      .pastry-items {
+        font-size: 1rem;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      /* contact panel */
+      .contact-panel .panel-title {
+        margin-bottom: 1rem;
+      }
+
+      .footer-map-wrap {
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 8px 24px rgba(11, 31, 107, 0.12);
+      }
+
+      .footer-map-wrap iframe {
+        display: block;
+        width: 100%;
+        height: 280px;
+        border: 0;
+      }
+
+      .contact-info p {
+        margin-bottom: 1rem;
+        font-size: 1rem;
+      }
+
+      .contact-info a {
+        color: var(--red);
+        text-decoration: none;
+      }
+
+      .contact-info a:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 768px) {
+        .split-layout {
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+          position: relative;
+          height: auto;
+          padding: 1.5rem 1rem;
+        }
+
+        .sidebar-brand {
+          margin-bottom: 1rem;
+        }
+
+        .nav-group {
+          margin-bottom: 1rem;
+        }
+
+        .content-panel {
+          padding: 1.5rem 1.25rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="split-layout">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <img src="../../assets/images/project-1/lbb-logo-text.png" alt="la bonne bouchee" />
+        </div>
+        <nav class="sidebar-nav">
+          <div class="nav-group">
+            <button type="button" class="nav-link nav-sublink" data-panel="contact">contact</button>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">breakfast</div>
+            <button type="button" class="nav-link nav-sublink active" data-panel="a-la-carte">
+              a la carte
+            </button>
+            <button type="button" class="nav-link nav-sublink" data-panel="pastries">fresh pastries**</button>
+            <button type="button" class="nav-link nav-sublink" data-panel="breakfast-sandwiches">
+              breakfast sandwiches
+            </button>
+            <button type="button" class="nav-link nav-sublink" data-panel="sides">sides</button>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">lunch</div>
+            <button type="button" class="nav-link nav-sublink" data-panel="salads">salads</button>
+            <button type="button" class="nav-link nav-sublink" data-panel="soups">soups</button>
+            <button type="button" class="nav-link nav-sublink" data-panel="entrees">entrees</button>
+            <button type="button" class="nav-link nav-sublink" data-panel="sandwiches">sandwiches</button>
+            <button type="button" class="nav-link nav-sublink" data-panel="childrens">children's menu</button>
+          </div>
+        </nav>
+      </aside>
+
+      <main class="content-area">
+        <div class="content-panel active" id="panel-a-la-carte">
+          <h2 class="panel-title">a la carte</h2>
+          <p class="panel-subtitle">monday - friday: 7:00 am - 10:45 am | saturday &amp; sunday: all day</p>
+          <ul>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">two eggs any style</div>
+                <div class="dish-description">
+                  poached, over easy/medium/hard, sunny side up, or scrambled
+                </div>
+              </div>
+              <div class="dish-price">$6.49</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">the continental</div>
+                <div class="dish-description">
+                  breakfast pastry** or fruit cup with jam, butter, juice, &amp; coffee
+                </div>
+              </div>
+              <div class="dish-price">$13.99</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">the traditional</div>
+                <div class="dish-description">
+                  two eggs, fruit cup, pastry**, jam, butter, juice, &amp; coffee
+                </div>
+              </div>
+              <div class="dish-price">$16.99</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">frittata</div>
+                <div class="dish-description">
+                  open-faced omelette with bacon, cheddar, &amp; rosemary roasted potatoes
+                </div>
+              </div>
+              <div class="dish-price">$14.49</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">vegetarian frittata</div>
+                <div class="dish-description">spinach, tomatoes, &amp; swiss cheese</div>
+              </div>
+              <div class="dish-price">$14.49</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">quiche lorraine</div>
+                <div class="dish-description">smoked ham, bacon, &amp; swiss cheese</div>
+              </div>
+              <div class="dish-price">$10.99</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">quiche du jour</div>
+                <div class="dish-description">ask your server about today's selections</div>
+              </div>
+              <div class="dish-price">$10.99</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">eggs benedict</div>
+                <div class="dish-description">poached eggs, canadian bacon, hollandaise, english muffin</div>
+              </div>
+              <div class="dish-price">$18.49</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">pancakes</div>
+                <div class="dish-description">four pancakes with berries, bananas, &amp; whipped cream</div>
+              </div>
+              <div class="dish-price">$14.49 | simple $10.49</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">belgian waffle</div>
+                <div class="dish-description">homemade waffle with berries, bananas, &amp; whipped cream</div>
+              </div>
+              <div class="dish-price">$14.49 | simple $10.49</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">junior pancakes</div>
+                <div class="dish-description">two pancakes + sausage links &amp; drink</div>
+              </div>
+              <div class="dish-price">$9.99 | simple $7.49</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">french toast</div>
+                <div class="dish-description">two slices</div>
+              </div>
+              <div class="dish-price">$8.99</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">simple omelette</div>
+                <div class="dish-description">with rosemary roasted potatoes. add cheese +$1.99</div>
+              </div>
+              <div class="dish-price">$10.99</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">create your own omelette</div>
+                <div class="dish-description">choice of 3 fillings. additional topping +$1.99</div>
+              </div>
+              <div class="dish-price">$13.99</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">fresh seasonal fruit</div>
+                <div class="dish-description">bowl or cup</div>
+              </div>
+              <div class="dish-price">bowl $7.99 | cup $5.99</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="content-panel" id="panel-pastries">
+          <h2 class="panel-title">fresh pastries**</h2>
+          <p class="panel-subtitle">monday - friday: 7:00 am - 10:45 am | saturday &amp; sunday: all day</p>
+          <p class="panel-note">++ additional charges apply. price varies by item.</p>
+          <div class="pastry-group">
+            <div class="pastry-category">filled croissants</div>
+            <div class="pastry-items">
+              almond, apple, apricot, bacon egg &amp; cheese ++, broccoli mushroom &amp; swiss ++, classic
+              butter, cherry, chocolate ++, cream cheese, ham &amp; swiss ++, lemon cream cheese, raspberry,
+              salted caramel, spinach &amp; feta ++, spinach &amp; ricotta ++, strawberry cream cheese
+            </div>
+          </div>
+          <div class="pastry-group">
+            <div class="pastry-category">specialty pastries</div>
+            <div class="pastry-items">
+              apple feuillete, assorted muffins, cinnamon cream cheese danish, cinnamon pecan roll, cinnamon
+              roll, cinnamon twist, cronish, danish, palmiers, turnover (apple or cherry)
+            </div>
+          </div>
+        </div>
+
+        <div class="content-panel" id="panel-breakfast-sandwiches">
+          <h2 class="panel-title">breakfast sandwiches</h2>
+          <p class="panel-subtitle">monday - friday: 7:00 am - 10:45 am | saturday &amp; sunday: all day</p>
+          <p class="panel-note">
+            served on biscuit, croissant, toast or english muffin. add cheese +$1.49 | add egg +$2.49.
+          </p>
+          <ul>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">bacon &amp; egg</div>
+                <div class="dish-description">classic bacon with a warm egg</div>
+              </div>
+              <div class="dish-price">$8.49</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">sausage &amp; egg</div>
+                <div class="dish-description">hearty sausage with egg</div>
+              </div>
+              <div class="dish-price">$8.49</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">ham &amp; egg</div>
+                <div class="dish-description">smoky ham paired with egg</div>
+              </div>
+              <div class="dish-price">$8.49</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">egg &amp; cheese</div>
+                <div class="dish-description">egg with melty cheese on chosen bread</div>
+              </div>
+              <div class="dish-price">$6.49</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="content-panel" id="panel-sides">
+          <h2 class="panel-title">sides</h2>
+          <p class="panel-subtitle">monday - friday: 7:00 am - 10:45 am | saturday &amp; sunday: all day</p>
+          <ul>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">meats</div>
+                <div class="dish-description">
+                  bacon (4), sausage links (4), sausage patties (2), ham slices (3)
+                </div>
+              </div>
+              <div class="dish-price">$5.49</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">toast</div>
+                <div class="dish-description">rye, 9-grain, or white</div>
+              </div>
+              <div class="dish-price">$3.49</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">rosemary roasted potatoes</div>
+                <div class="dish-description">crisp-edged potatoes with rosemary</div>
+              </div>
+              <div class="dish-price">$5.49</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">biscuit &amp; gravy</div>
+                <div class="dish-description">warm biscuit with savory gravy</div>
+              </div>
+              <div class="dish-price">$5.49</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="content-panel" id="panel-salads">
+          <h2 class="panel-title">salads</h2>
+          <p class="panel-subtitle">daily: 10:45 am - 2:30 pm</p>
+          <p class="panel-note">
+            dressings: original house, lemon-balsamic, raspberry vinaigrette, buttermilk ranch, caesar, bleu
+            cheese.
+          </p>
+          <ul>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">salade maison</div>
+                <div class="dish-description">
+                  mixed greens, tomatoes, carrots, cucumbers, hearts of palm, croutons
+                </div>
+              </div>
+              <div class="dish-price">$10.49</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">salade nicoise</div>
+                <div class="dish-description">
+                  field greens, albacore tuna, potatoes, bell peppers, nicoise olives
+                </div>
+              </div>
+              <div class="dish-price">full $22.99 | petite $16.49</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">bay shrimp salad</div>
+                <div class="dish-description">
+                  mixed greens, shrimp, chow mein noodles, oriental vinaigrette
+                </div>
+              </div>
+              <div class="dish-price">full $22.99 | petite $16.49</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">vegetarian salad</div>
+                <div class="dish-description">baby spinach, berries, grapes, mandarin oranges, walnuts</div>
+              </div>
+              <div class="dish-price">full $20.49 | petite $15.99</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">mediterranean chicken salad</div>
+                <div class="dish-description">grilled chicken, artichoke hearts, feta, croutons</div>
+              </div>
+              <div class="dish-price">full $20.49 | petite $15.99</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">la bonne bouchee chicken salad</div>
+                <div class="dish-description">homemade chicken salad over mixed greens</div>
+              </div>
+              <div class="dish-price">full $19.49 | petite $15.99</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="content-panel" id="panel-soups">
+          <h2 class="panel-title">soups</h2>
+          <p class="panel-subtitle">daily: 10:45 am - 2:30 pm</p>
+          <ul>
+            <li class="dish-item">
+              <div class="dish-content"><div class="dish-name">la bonne bouchee french onion</div></div>
+              <div class="dish-price">bowl $9.99 | cup $6.99</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content"><div class="dish-name">soup du jour</div></div>
+              <div class="dish-price">bowl $8.49 | cup $6.99</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="content-panel" id="panel-entrees">
+          <h2 class="panel-title">entrees</h2>
+          <p class="panel-subtitle">daily: 10:45 am - 2:30 pm</p>
+          <p class="panel-note">served with soup du jour, french onion, or side salad.</p>
+          <ul>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">quiche lorraine</div>
+                <div class="dish-description">smoked ham, bacon, swiss. with vegetable du jour</div>
+              </div>
+              <div class="dish-price">full $15.49 | half $12.49</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">quiche du jour</div>
+                <div class="dish-description">ask about selections. with vegetable du jour</div>
+              </div>
+              <div class="dish-price">full $15.49 | half $12.49</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">le croque monsieur</div>
+                <div class="dish-description">grilled ham &amp; swiss with dijon, bechamel</div>
+              </div>
+              <div class="dish-price">$16.99</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">croissant au jambon et fromage</div>
+                <div class="dish-description">ham &amp; swiss on butter croissant</div>
+              </div>
+              <div class="dish-price">$15.99</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">bay shrimp pasta</div>
+                <div class="dish-description">shrimp, farfalle, tomato fennel sauce</div>
+              </div>
+              <div class="dish-price">$22.99</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">les crepes aux fruits de mer</div>
+                <div class="dish-description">shrimp, crab, spinach + lobster mornay</div>
+              </div>
+              <div class="dish-price">full $20.99 | half $13.49</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">la bouchee aux crevettes</div>
+                <div class="dish-description">puff pastry with shrimp, tarragon lobster sauce</div>
+              </div>
+              <div class="dish-price">$21.99</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">le vol au vent</div>
+                <div class="dish-description">grilled chicken &amp; mushrooms in supreme sauce</div>
+              </div>
+              <div class="dish-price">$19.49</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">sauteed salmon</div>
+                <div class="dish-description">basil pesto butter, rice blend</div>
+              </div>
+              <div class="dish-price">$21.99</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">baked chicken breast</div>
+                <div class="dish-description">cream sauce, mushrooms &amp; broccoli</div>
+              </div>
+              <div class="dish-price">$21.99</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">simple omelette</div>
+                <div class="dish-description">with vegetable du jour. add cheese +$1.49</div>
+              </div>
+              <div class="dish-price">$13.99</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">create your own lunch omelette</div>
+                <div class="dish-description">choice of 3 toppings. with vegetable du jour</div>
+              </div>
+              <div class="dish-price">$17.99</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="content-panel" id="panel-sandwiches">
+          <h2 class="panel-title">sandwiches</h2>
+          <p class="panel-subtitle">daily: 10:45 am - 2:30 pm</p>
+          <p class="panel-note">
+            served with fresh fruit or chips. bread: swirled rye, nine grain, croissant, ciabatta.
+          </p>
+          <ul>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">classic chicken salad</div>
+                <div class="dish-description">grilled chicken, almonds, hard-boiled eggs</div>
+              </div>
+              <div class="dish-price">$16.49</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">vegetable sandwich</div>
+                <div class="dish-description">spinach, tomatoes, dill havarti, hummus</div>
+              </div>
+              <div class="dish-price">$13.49</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">la salade de thon</div>
+                <div class="dish-description">albacore tuna, hard-boiled eggs</div>
+              </div>
+              <div class="dish-price">$16.49</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">slow-roasted top round of boeuf</div>
+                <div class="dish-description">roast beef, gouda, horseradish on ciabatta</div>
+              </div>
+              <div class="dish-price">$16.99</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">smoked turkey breast</div>
+                <div class="dish-description">turkey, provolone, avocado mayo</div>
+              </div>
+              <div class="dish-price">$16.49</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">choose two</div>
+                <div class="dish-description">half sandwich, fruit cup, soup, or side salad</div>
+              </div>
+              <div class="dish-price">$14.99</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="content-panel" id="panel-childrens">
+          <h2 class="panel-title">children's menu</h2>
+          <p class="panel-subtitle">daily: 10:45 am - 2:30 pm</p>
+          <p class="panel-note">includes drink &amp; fruit cup or chips.</p>
+          <ul>
+            <li class="dish-item">
+              <div class="dish-content"><div class="dish-name">toasted cheddar cheese</div></div>
+              <div class="dish-price">$8.99</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content"><div class="dish-name">deli turkey sandwich</div></div>
+              <div class="dish-price">$8.99</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content"><div class="dish-name">peanut butter &amp; jelly</div></div>
+              <div class="dish-price">$8.99</div>
+            </li>
+            <li class="dish-item">
+              <div class="dish-content">
+                <div class="dish-name">bow tie pasta</div>
+                <div class="dish-description">butter &amp; parmesan</div>
+              </div>
+              <div class="dish-price">$8.99</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="content-panel contact-panel" id="panel-contact">
+          <h2 class="panel-title">contact</h2>
+          <p class="panel-subtitle">visit us in creve coeur</p>
+          <div class="footer-map-wrap">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3114.97843454482!2d-90.45930732300283!3d38.67236367177308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87df2d5d9aa7cabb%3A0xd9c864095e540ee6!2sLa%20Bonne%20Bouch%C3%A9e%20Patisserie%20%26%20Cafe!5e0!3m2!1sen!2sus!4v1769449727983!5m2!1sen!2sus"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="la bonne bouchee location"
+            ></iframe>
+          </div>
+          <div class="contact-info">
+            <p><strong>12344 olive blvd</strong><br />creve coeur, mo 63141</p>
+            <p><a href="tel:+13145766606">(314) 576-6606</a></p>
+            <p><a href="https://labonnebouchee.com" target="_blank" rel="noopener">labonnebouchee.com</a></p>
+            <p style="margin-top: 1rem">
+              <strong>restaurant hours</strong><br />sun: 8:00 am - 2:30 pm<br />mon-sat: 7:30 am - 2:30 pm
+            </p>
+            <p style="margin-top: 1rem">
+              <strong>bakery &amp; cafe hours</strong><br />sun: 8:00 am - 4:00 pm<br />mon: 7:00 am - 6:30
+              pm<br />tue-sat: 7:00 am - 8:30 pm
+            </p>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const navLinks = document.querySelectorAll(".nav-link");
+        const panels = document.querySelectorAll(".content-panel");
+
+        navLinks.forEach(function (link) {
+          link.addEventListener("click", function () {
+            const panelId = "panel-" + this.getAttribute("data-panel");
+
+            navLinks.forEach(function (l) {
+              l.classList.remove("active");
+            });
+            this.classList.add("active");
+
+            panels.forEach(function (panel) {
+              panel.classList.remove("active");
+              if (panel.id === panelId) {
+                panel.classList.add("active");
+              }
+            });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
