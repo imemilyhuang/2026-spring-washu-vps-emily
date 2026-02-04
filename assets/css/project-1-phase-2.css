@@ -179,21 +179,12 @@ body {
   box-shadow: 0 4px 20px rgba(11, 31, 107, 0.08);
 }
 
-@media (min-width: 640px) {
-  .menu-section-row {
-    flex-direction: row;
-    align-items: center;
-    gap: 2rem;
-  }
-}
-
 .menu-section-content {
-  flex: 1;
   padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1.25rem;
+  gap: 2rem;
 }
 
 .menu-section-title {
@@ -238,14 +229,9 @@ body {
   flex-shrink: 0;
   width: 100%;
   min-height: 220px;
-}
-
-@media (min-width: 640px) {
-  .menu-section-image {
-    width: 45%;
-    min-width: 280px;
-    min-height: 200px;
-  }
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .menu-section-image img {
@@ -254,12 +240,7 @@ body {
   height: 100%;
   min-height: 220px;
   object-fit: cover;
-}
-
-@media (min-width: 640px) {
-  .menu-section-image img {
-    min-height: 200px;
-  }
+  object-position: center;
 }
 
 /* menu pages: accordion and dish list */
@@ -273,13 +254,6 @@ body {
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(11, 31, 107, 0.08);
   background: var(--white);
-}
-
-@media (min-width: 900px) {
-  .menu-accordion {
-    width: 840px;
-    min-width: 840px;
-  }
 }
 
 .menu-accordion details {
@@ -460,18 +434,6 @@ footer {
   gap: 4rem;
 }
 
-@media (min-width: 700px) {
-  .footer-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 699px) {
-  .footer-grid {
-    gap: 1.5rem;
-  }
-}
-
 .footer-map-wrap {
   overflow: hidden;
 }
@@ -501,7 +463,7 @@ footer {
 }
 
 /* responsive */
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .navbar {
     flex-direction: column;
     align-items: stretch;
@@ -529,5 +491,45 @@ footer {
   .dish-item {
     flex-direction: column;
     gap: 0.25rem;
+  }
+  .footer-grid {
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 800px) {
+  .menu-section-row {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 2rem;
+  }
+
+  .menu-section-content {
+    width: 40%;
+    flex: 0 0 40%;
+  }
+
+  .menu-section-image {
+    width: 60%;
+    flex: 0 0 60%;
+    min-height: 0;
+    align-self: stretch;
+  }
+
+  .menu-section-image img {
+    min-height: 0;
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 900px) {
+  .menu-accordion {
+    width: 840px;
+    min-width: 840px;
   }
 }
