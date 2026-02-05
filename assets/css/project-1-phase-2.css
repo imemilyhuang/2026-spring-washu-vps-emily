@@ -1,4 +1,4 @@
-/* ===== Variables ===== */
+/* ===== variables ===== */
 :root {
   --royal: #0b1f6b;
   --red: #d72638;
@@ -11,7 +11,7 @@
   --container: 900px;
 }
 
-/* ===== Base ===== */
+/* ===== base ===== */
 * {
   margin: 0;
   padding: 0;
@@ -32,7 +32,7 @@ body {
   flex-direction: column;
 }
 
-/* ===== Nav ===== */
+/* ===== nav ===== */
 .navbar {
   position: sticky;
   top: 0;
@@ -94,7 +94,7 @@ body {
   transform: translateY(-2px);
 }
 
-/* ===== Hero ===== */
+/* ===== hero ===== */
 .hero {
   position: relative;
   min-height: 73vh;
@@ -158,7 +158,7 @@ body {
   color: rgba(255, 255, 255, 0.95);
 }
 
-/* ===== Layout ===== */
+/* ===== layout ===== */
 .main-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -196,7 +196,7 @@ body {
   margin-bottom: 1.5rem;
 }
 
-/* ===== Home: About section ===== */
+/* ===== home: about section ===== */
 .about-intro {
   max-width: 700px;
   margin-left: auto;
@@ -211,7 +211,7 @@ body {
   margin: 0 auto 1.5rem;
 }
 
-/* ===== Home: Menus section ===== */
+/* ===== home: menus section ===== */
 .menu-cards {
   display: flex;
   flex-direction: column;
@@ -226,11 +226,15 @@ body {
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(11, 31, 107, 0.08);
   position: relative;
-  transition: box-shadow 0.25s ease, outline 0.25s ease;
+  transition:
+    box-shadow 0.25s ease,
+    outline 0.25s ease;
 }
 
 .menu-card.happening-now {
-  box-shadow: 0 4px 20px rgba(11, 31, 107, 0.08), 0 0 0 3px var(--red);
+  box-shadow:
+    0 4px 20px rgba(11, 31, 107, 0.08),
+    0 0 0 3px var(--red);
 }
 
 .happening-now-tab {
@@ -308,7 +312,7 @@ body {
   object-position: center;
 }
 
-/* ===== Home: Visit section ===== */
+/* ===== home: visit section ===== */
 .visit-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -354,7 +358,7 @@ body {
   margin-bottom: 1rem;
 }
 
-/* ===== About page ===== */
+/* ===== about page ===== */
 .about-panels {
   display: grid;
   grid-template-columns: 1fr;
@@ -434,7 +438,7 @@ body {
   object-position: center;
 }
 
-/* ===== Menu pages (breakfast, lunch) ===== */
+/* ===== menu pages (breakfast, lunch) ===== */
 .menu-column section {
   width: 100%;
 }
@@ -492,7 +496,7 @@ body {
   overflow-wrap: break-word;
 }
 
-/* ===== Featured carousel ===== */
+/* ===== featured carousel ===== */
 .featured-carousel {
   margin-top: 4rem;
   overflow: hidden;
@@ -567,7 +571,9 @@ body {
   color: rgba(255, 255, 255);
   text-align: center;
   z-index: 2;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
+  transition:
+    color 0.3s ease,
+    text-shadow 0.3s ease;
 }
 
 .carousel-thumb:hover .carousel-label {
@@ -671,7 +677,7 @@ body {
   line-height: 1.8;
 }
 
-/* ===== Footer ===== */
+/* ===== footer ===== */
 footer {
   background: var(--royal);
   color: var(--white);
@@ -744,7 +750,7 @@ footer {
   height: 28px;
 }
 
-/* ===== Responsive ===== */
+/* ===== responsive ===== */
 @media (max-width: 700px) {
   .navbar {
     flex-direction: column;
