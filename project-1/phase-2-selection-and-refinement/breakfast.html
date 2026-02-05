@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Josefin+Sans:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../../assets/css/project-1-phase-2.css" />
@@ -19,19 +19,16 @@
         <a href="index.html">La Bonne Bouchee</a>
       </div>
       <div class="nav-links">
-        <a href="index.html">Home</a>
         <a href="breakfast.html">Breakfast</a>
         <a href="lunch.html">Lunch</a>
-        <a href="#contact">Contact</a>
+        <a href="about.html">About</a>
       </div>
     </nav>
 
     <header class="hero breakfast">
       <div class="hero-inner">
-        <div class="hero-inner">
-          <p class="hero-tagline">La Bonne Bouchee</p>
-          <p class="hero-heading">Breakfast Menu</p>
-        </div>
+        <p class="hero-tagline">La Bonne Bouchee</p>
+        <p class="hero-heading">Breakfast Menu</p>
       </div>
     </header>
 
@@ -284,35 +281,127 @@
               </div>
             </details>
           </div>
+
+          <section class="featured-carousel" aria-label="Featured Breakfast Dishes">
+            <h3 class="carousel-title">Featured Dishes</h3>
+            <div class="carousel-main">
+              <img
+                id="carousel-main-img"
+                src="../../assets/images/project-1/almond-croissants.jpg"
+                alt="Almond croissants"
+              />
+            </div>
+            <div class="carousel-thumbs">
+              <div
+                class="carousel-thumb"
+                data-src="../../assets/images/project-1/almond-croissants.jpg"
+                data-alt="Almond croissants"
+              >
+                <img src="../../assets/images/project-1/almond-croissants.jpg" alt="" aria-hidden="true" />
+                <span class="carousel-label">Almond Croissants</span>
+              </div>
+              <div
+                class="carousel-thumb"
+                data-src="../../assets/images/project-1/bacon-egg-breakfast-sandwich.webp"
+                data-alt="Bacon and egg breakfast sandwich"
+              >
+                <img
+                  src="../../assets/images/project-1/bacon-egg-breakfast-sandwich.webp"
+                  alt=""
+                  aria-hidden="true"
+                />
+                <span class="carousel-label">Bacon &amp; Egg Sandwich</span>
+              </div>
+              <div
+                class="carousel-thumb"
+                data-src="../../assets/images/project-1/veggie-frittata.png"
+                data-alt="Vegetarian frittata"
+              >
+                <img src="../../assets/images/project-1/veggie-frittata.png" alt="" aria-hidden="true" />
+                <span class="carousel-label">Vegetarian Frittata</span>
+              </div>
+              <div
+                class="carousel-thumb"
+                data-src="../../assets/images/project-1/rosemary-roasted-potatoes.jpg"
+                data-alt="Rosemary roasted potatoes"
+              >
+                <img
+                  src="../../assets/images/project-1/rosemary-roasted-potatoes.jpg"
+                  alt=""
+                  aria-hidden="true"
+                />
+                <span class="carousel-label">Rosemary Potatoes</span>
+              </div>
+            </div>
+          </section>
         </section>
       </main>
     </div>
 
     <footer id="contact">
-      <div class="footer-grid">
-        <div class="footer-map-wrap">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3114.97843454482!2d-90.45930732300283!3d38.67236367177308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87df2d5d9aa7cabb%3A0xd9c864095e540ee6!2sLa%20Bonne%20Bouch%C3%A9e%20Patisserie%20%26%20Cafe!5e0!3m2!1sen!2sus!4v1769449727983!5m2!1sen!2sus"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="La Bonne Bouchee Location"
-          ></iframe>
-        </div>
-        <div class="footer-info">
-          <h3>La Bonne Bouchee</h3>
-          <p>12344 Olive Blvd, Creve Coeur, MO 63141</p>
-          <p><a href="tel:+13145766606">(314) 576-6606</a></p>
-          <p><a href="https://labonnebouchee.com" target="_blank" rel="noopener">labonnebouchee.com</a></p>
-          <p style="margin-top: 1rem">
-            <strong>Restaurant Hours</strong><br />Sun: 8:00 AM - 2:30 PM<br />Mon-Sat: 7:30 AM - 2:30 PM
-          </p>
-          <p style="margin-top: 1rem">
-            <strong>Bakery &amp; Cafe Hours</strong><br />Sun: 8:00 AM - 4:00 PM<br />Mon: 7:00 AM - 6:30
-            PM<br />Tue-Sat: 7:00 AM - 8:30 PM
-          </p>
+      <div class="footer-inner">
+        <div class="footer-brand">La Bonne Bouchee</div>
+        <nav class="footer-sitemap" aria-label="Footer">
+          <a href="index.html">Home</a>
+          <a href="breakfast.html">Breakfast</a>
+          <a href="lunch.html">Lunch</a>
+          <a href="about.html">About</a>
+        </nav>
+        <div class="footer-social">
+          <a
+            href="https://www.instagram.com/la_bonne_bouchee_/?hl=en"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+          >
+            <svg
+              class="footer-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+              />
+            </svg>
+          </a>
+          <a
+            href="https://www.facebook.com/p/La-Bonne-Bouch%C3%A9e-Patisserie-Cafe-61563785393752/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+          >
+            <svg
+              class="footer-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+              />
+            </svg>
+          </a>
         </div>
       </div>
     </footer>
+    <script>
+      (function () {
+        const mainImg = document.getElementById("carousel-main-img");
+        const thumbs = document.querySelectorAll(".carousel-thumb");
+        thumbs.forEach(function (thumb) {
+          thumb.addEventListener("mouseenter", function () {
+            mainImg.src = this.dataset.src;
+            mainImg.alt = this.dataset.alt;
+          });
+        });
+      })();
+    </script>
   </body>
 </html>
