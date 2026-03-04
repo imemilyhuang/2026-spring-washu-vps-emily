@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invisible Cities — Atlas</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Josefin+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="atlas-header">
+      <h1 class="atlas-title">ATLAS</h1>
+      <button class="atlas-menu-toggle" id="atlasMenuToggle" aria-label="Open filters">
+        <span class="menu-toggle-bar"></span>
+        <span class="menu-toggle-bar"></span>
+        <span class="menu-toggle-bar"></span>
+      </button>
+    </header>
+
+    <p class="atlas-submsg"><em>Invisible Cities</em> by Italo Calvino (1972)</p>
+
+    <div class="atlas-active-filters" id="atlasActiveFilters"></div>
+
+    <main class="atlas-grid" id="atlasGrid">
+      <!-- City cards rendered by script -->
+    </main>
+
+    <div class="atlas-filter-overlay" id="atlasFilterOverlay" aria-hidden="true">
+      <header class="atlas-filter-overlay-header">
+        <div class="atlas-filter-overlay-header-text">
+          <h2 class="atlas-filter-overlay-title">FILTER</h2>
+          <p class="atlas-submsg">Filters update automatically</p>
+        </div>
+        <button class="atlas-filter-overlay-close" id="atlasFilterOverlayClose" aria-label="Close">×</button>
+      </header>
+      <div class="atlas-filter-overlay-content">
+        <section class="atlas-filter-section">
+          <h3 class="atlas-filter-section-title">Theme</h3>
+          <p class="atlas-filter-hint">Pick one theme at a time</p>
+          <div class="atlas-filter-themes" id="atlasFilterThemes"></div>
+        </section>
+        <section class="atlas-filter-section">
+          <h3 class="atlas-filter-section-title">Motifs</h3>
+          <p class="atlas-filter-hint">Check motifs to filter</p>
+          <div class="atlas-filter-motifs" id="atlasFilterMotifs"></div>
+        </section>
+      </div>
+    </div>
+
+    <div class="atlas-modal" id="atlasModal" aria-hidden="true">
+      <div class="atlas-modal-backdrop" id="atlasModalBackdrop"></div>
+      <div class="atlas-modal-content">
+        <button class="atlas-modal-close" id="atlasModalClose" aria-label="Close">×</button>
+        <div class="atlas-modal-body" id="atlasModalBody"></div>
+      </div>
+    </div>
+
+    <script src="../data.js"></script>
+    <script src="../chapters.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

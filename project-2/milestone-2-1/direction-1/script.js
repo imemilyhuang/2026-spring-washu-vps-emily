@@ -15,6 +15,9 @@
     splash: document.getElementById("splash"),
     splashEnter: document.getElementById("splashEnter"),
     chapterOverview: document.getElementById("chapter-overview"),
+    chapterOverviewLogo: document.getElementById("chapterOverviewLogo"),
+    chapterOverviewHeaderChapter: document.getElementById("chapterOverviewHeaderChapter"),
+    chapterOverviewMenuToggle: document.getElementById("chapterOverviewMenuToggle"),
     chapterOverviewTitle: document.getElementById("chapterOverviewTitle"),
     chapterOverviewDesc: document.getElementById("chapterOverviewDesc"),
     chapterOverviewContinue: document.getElementById("chapterOverviewContinue"),
@@ -40,12 +43,18 @@
     motifCards: document.getElementById("motifCards"),
   };
 
+  function motifName(m) {
+    return typeof m === "string" ? m : (m && m.name) || "";
+  }
+
   function buildMotifMap() {
     motifMap = {};
     cities.forEach((city) => {
       (city.motifs || []).forEach((m) => {
-        if (!motifMap[m.name]) motifMap[m.name] = [];
-        motifMap[m.name].push({ city, motif: m });
+        const name = motifName(m);
+        if (!name) return;
+        if (!motifMap[name]) motifMap[name] = [];
+        motifMap[name].push({ city, motif: m });
       });
     });
   }
@@ -68,7 +77,6 @@
   }
 
   function showSplash() {
-    if (els.splash) els.splash.classList.remove("hidden");
     showScreen("splash");
     document.body.classList.remove("nav-open");
   }
@@ -76,9 +84,16 @@
   function showChapterOverview(chapter, targetIndex) {
     currentChapterId = chapter ? chapter.id : 1;
     const ch = getChapterById(currentChapterId);
+    if (els.chapterOverviewHeaderChapter) els.chapterOverviewHeaderChapter.textContent = ch.title;
     els.chapterOverviewTitle.textContent = ch.title;
     els.chapterOverviewDesc.textContent = ch.text || "";
+    const isEnd = ch.id === 5;
+    els.chapterOverviewContinue.textContent = isEnd ? "RESTART" : "CONTINUE →";
     els.chapterOverviewContinue.onclick = () => {
+      if (isEnd) {
+        showSplash();
+        return;
+      }
       if (typeof targetIndex === "number" && targetIndex >= 0) {
         currentIndex = targetIndex;
         showCityView();
@@ -124,30 +139,35 @@
 
     els.motifTags.innerHTML = "";
     (city.motifs || []).forEach((motif) => {
+      const name = motifName(motif);
+      if (!name) return;
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "motif-tag";
-      btn.textContent = motif.name;
+      btn.textContent = name;
       btn.addEventListener("click", (e) => {
         e.stopPropagation();
-        showMotifView(motif);
+        showMotifView(name);
       });
       els.motifTags.appendChild(btn);
     });
 
     els.navPrev.disabled = currentIndex <= 0;
-    els.navNext.disabled = currentIndex >= cities.length - 1;
+    els.navNext.disabled = false;
+
+    const excerptWrap = document.querySelector(".city-excerpt-wrap");
+    if (excerptWrap) excerptWrap.scrollTop = 0;
 
     showScreen("city-view");
   }
 
-  function showMotifView(motif) {
-    els.motifViewTitle.textContent = motif.name;
+  function showMotifView(motifName) {
+    els.motifViewTitle.textContent = motifName;
     els.motifCards.innerHTML = "";
 
-    const items = motifMap[motif.name] || [];
+    const items = motifMap[motifName] || [];
     items.forEach(({ city, motif: m }) => {
-      const quote = (m.quotes && m.quotes[0]) || "";
+      const quote = (m && m.quotes && m.quotes[0]) || "";
       const iconSrc = city.icon ? ICON_BASE + city.icon : "";
       const iconHtml = iconSrc
         ? `<img class="motif-card-icon" src="${escapeHtml(iconSrc)}" alt="" onerror="this.style.display='none'" />`
@@ -158,7 +178,7 @@
       card.innerHTML = `
         ${iconHtml}
         <div class="motif-card-title">${escapeHtml(city.name)}</div>
-        <p class="motif-card-quote">${escapeHtml(quote)}</p>
+        <p class="motif-card-quote splash-quote">${escapeHtml(quote)}</p>
       `;
       card.addEventListener("click", () => {
         const idx = cities.findIndex((c) => c.id === city.id);
@@ -206,10 +226,8 @@
       header.textContent = chapter.title;
       header.addEventListener("click", (e) => {
         e.stopPropagation();
-        const id = parseInt(accordion.dataset.chapterId, 10);
         if (accordion.classList.contains("open")) {
-          showChapterOverview(getChapterById(id));
-          closeNavOverlay();
+          accordion.classList.remove("open");
         } else {
           document.querySelectorAll(".nav-accordion").forEach((a) => a.classList.remove("open"));
           accordion.classList.add("open");
@@ -270,7 +288,11 @@
   }
 
   function goNext() {
-    if (currentIndex >= cities.length - 1) return;
+    if (currentIndex >= cities.length - 1) {
+      const endChapter = chapters.find((c) => c.id === 5) || chapters[chapters.length - 1];
+      if (endChapter) showChapterOverview(endChapter);
+      return;
+    }
     const nextCity = cities[currentIndex + 1];
     const currCh = getChapterForCity(cities[currentIndex].id);
     const nextCh = getChapterForCity(nextCity.id);
@@ -287,27 +309,26 @@
     showScreen("splash");
 
     const proceedFromSplash = () => {
-      if (!els.splash || els.splash.classList.contains("hidden")) return;
-      els.splash.classList.add("hidden");
-      setTimeout(() => {
-        if (chapters.length > 0) {
-          showChapterOverview(chapters[0]);
-        } else {
-          currentIndex = 0;
-          showCityView();
-        }
-      }, 400);
+      if (!els.splash) return;
+      if (chapters.length > 0) {
+        showChapterOverview(chapters[0]);
+      } else {
+        currentIndex = 0;
+        showCityView();
+      }
     };
 
     els.splashEnter.addEventListener("click", proceedFromSplash);
 
     els.cityLogo.addEventListener("click", showSplash);
+    if (els.chapterOverviewLogo) els.chapterOverviewLogo.addEventListener("click", showSplash);
     els.navOverlayLogo.addEventListener("click", () => {
       closeNavOverlay();
       showSplash();
     });
 
     els.menuToggle.addEventListener("click", openNavOverlay);
+    if (els.chapterOverviewMenuToggle) els.chapterOverviewMenuToggle.addEventListener("click", openNavOverlay);
     els.menuClose.addEventListener("click", closeNavOverlay);
 
     els.navPrev.addEventListener("click", goPrev);

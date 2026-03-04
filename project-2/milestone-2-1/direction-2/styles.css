@@ -1,0 +1,540 @@
+/* Invisible Cities — Atlas (Direction 2) */
+
+:root {
+  --transition-slow: 0.4s ease;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 300;
+  background: linear-gradient(180deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  color: #fff;
+}
+
+/* Header */
+.atlas-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.atlas-title {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  letter-spacing: 0.2em;
+  margin: 0;
+  color: #fff;
+}
+
+.atlas-subtitle {
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+.atlas-submsg {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  padding: 0.75rem 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Hamburger menu button */
+.atlas-menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 1.25rem;
+  height: 2rem;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.atlas-menu-toggle:hover {
+  color: #fff;
+}
+
+.atlas-menu-toggle .menu-toggle-bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+}
+
+/* Active filter chips (shown below header when filters applied) */
+.atlas-active-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.75rem 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.2);
+  min-height: 2.5rem;
+}
+
+.atlas-active-filters:empty {
+  display: none;
+}
+
+.atlas-filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+}
+
+.atlas-filter-chip-remove {
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.atlas-filter-chip-remove:hover {
+  color: #fff;
+}
+
+/* Filter overlay (hamburger menu content) */
+.atlas-filter-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-slow), visibility var(--transition-slow);
+}
+
+.atlas-filter-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.atlas-filter-overlay-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.atlas-filter-overlay-header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.atlas-filter-overlay-header .atlas-submsg {
+  border-bottom: none;
+  padding: 0.25rem 0 0;
+}
+
+.atlas-filter-overlay-title {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin: 0;
+  color: #fff;
+}
+
+.atlas-filter-overlay-close {
+  font-size: 1.5rem;
+  line-height: 1;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.atlas-filter-overlay-close:hover {
+  color: #fff;
+}
+
+.atlas-filter-overlay-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem 2rem;
+}
+
+.atlas-filter-section {
+  margin-bottom: 2rem;
+}
+
+.atlas-filter-section-title {
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+  margin: 0 0 0.5rem;
+  color: #fff;
+}
+
+.atlas-filter-hint {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.atlas-filter-themes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.atlas-filter-theme {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.95rem;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  cursor: pointer;
+  transition: background var(--transition-slow), border-color var(--transition-slow);
+}
+
+.atlas-filter-theme:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.atlas-filter-theme.active {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.atlas-filter-motifs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.atlas-filter-motif {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  color: #fff;
+  cursor: pointer;
+  padding: 0.6rem 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.atlas-filter-motif:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.atlas-filter-motif input {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin: 0;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.atlas-filter-motif input:checked {
+  background-color: rgba(255, 255, 255, 0.15);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='rgba(255,255,255,0.9)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 6l3 3 5-6'/%3E%3C/svg%3E");
+  background-size: 10px 10px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.atlas-filter-done {
+  display: block;
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 0.9rem 1.5rem;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #fff;
+  cursor: pointer;
+  transition: background var(--transition-slow);
+}
+
+.atlas-filter-done:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Filters (legacy, kept for select fallback) */
+.atlas-filters {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.25rem 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.filter-label {
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+.filter-select {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.9rem;
+  padding: 0.5rem 2rem 0.5rem 0.75rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  cursor: pointer;
+  border-radius: 0;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23fff' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+}
+
+.filter-select:hover,
+.filter-select:focus {
+  background-color: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.45);
+  outline: none;
+}
+
+.filter-select option {
+  background: #1e293b;
+  color: #fff;
+}
+
+.atlas-count {
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 0 auto;
+}
+
+/* 2-column grid */
+.atlas-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
+.atlas-no-results {
+  grid-column: 1 / -1;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  padding: 2rem;
+  text-align: center;
+}
+
+.atlas-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: background var(--transition-slow), border-color var(--transition-slow);
+  text-align: center;
+}
+
+.atlas-card:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.atlas-card-icon {
+  width: 3rem;
+  height: 3rem;
+  opacity: 0.85;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.atlas-card-icon[src=""], .atlas-card:not([data-icon]) .atlas-card-icon {
+  display: none;
+}
+
+.atlas-card-name {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin: 0;
+  color: #fff;
+}
+
+.atlas-card-theme {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0;
+}
+
+.atlas-card-motifs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem;
+  margin-top: 0.25rem;
+}
+
+.atlas-card-motif {
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Modal */
+.atlas-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-slow), visibility var(--transition-slow);
+}
+
+.atlas-modal.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.atlas-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
+
+.atlas-modal-content {
+  position: relative;
+  max-width: 36rem;
+  max-height: 85vh;
+  width: 100%;
+  background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.atlas-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  line-height: 1;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.atlas-modal-close:hover {
+  color: #fff;
+}
+
+.atlas-modal-body .modal-title {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin: 0 0 0.25rem;
+  color: #fff;
+}
+
+.atlas-modal-body .modal-theme {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 1rem;
+}
+
+.atlas-modal-body .modal-excerpt {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0 0 1rem;
+}
+
+.atlas-modal-body .modal-motifs {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0 0 0.5rem;
+}
+
+.atlas-modal-body .modal-motif-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.atlas-modal-body .modal-motif-tag {
+  font-size: 0.8rem;
+  padding: 0.3rem 0.6rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.95);
+}

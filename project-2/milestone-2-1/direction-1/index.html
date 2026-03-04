@@ -18,19 +18,28 @@
       <div class="splash-decoration">* * *</div>
       <h1 class="splash-title">INVISIBLE CITIES</h1>
       <p class="splash-author">italo calvino (1972)</p>
-      <p class="splash-translation">~a digital translation~</p>
-      <button class="splash-enter" id="splashEnter">Enter →</button>
+      <p class="splash-translation"><em>a digital translation</em></p>
+      <button class="splash-enter" id="splashEnter">ENTER →</button>
       <blockquote class="splash-quote">"Arriving at each new city, the traveler finds again a past of his that he did not know he had."</blockquote>
     </section>
 
     <!-- SCREEN 2 — Chapter Overview -->
     <section id="chapter-overview" class="screen">
+      <header class="city-header chapter-overview-header">
+        <button class="city-logo" id="chapterOverviewLogo" aria-label="Back to splash">*</button>
+        <h2 class="city-header-chapter" id="chapterOverviewHeaderChapter"></h2>
+        <button class="menu-toggle" id="chapterOverviewMenuToggle" aria-label="Open menu">
+          <span class="menu-toggle-bar"></span>
+          <span class="menu-toggle-bar"></span>
+          <span class="menu-toggle-bar"></span>
+        </button>
+      </header>
       <div class="chapter-overview-inner">
         <h2 class="chapter-overview-title" id="chapterOverviewTitle"></h2>
         <div class="chapter-overview-text-wrap">
           <p class="chapter-overview-desc" id="chapterOverviewDesc"></p>
         </div>
-        <button class="chapter-overview-continue" id="chapterOverviewContinue">Continue →</button>
+        <button class="chapter-overview-continue" id="chapterOverviewContinue">CONTINUE →</button>
         <div class="chapter-overview-decoration">* * *</div>
       </div>
     </section>
@@ -38,7 +47,7 @@
     <!-- SCREEN 3 — City View -->
     <section id="city-view" class="screen">
       <header class="city-header">
-        <button class="city-logo" id="cityLogo" aria-label="Back to splash">*</button>
+        <button class="city-logo" id="cityLogo" aria-label="Back to Splash">*</button>
         <h2 class="city-header-chapter" id="cityHeaderChapter">Chapter 1</h2>
         <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
           <span class="menu-toggle-bar"></span>
@@ -56,14 +65,15 @@
           <div class="city-excerpt-wrap">
             <p class="city-excerpt" id="cityExcerpt"></p>
           </div>
+          <div class="city-section-divider" aria-hidden="true"><span class="city-section-divider-asterisk">*</span></div>
           <div class="motif-section">
             <p class="motif-label">MOTIFS PRESENT</p>
             <div class="motif-tags" id="motifTags"></div>
           </div>
         </article>
         <nav class="city-nav">
-          <button class="nav-btn nav-prev" id="navPrev" disabled>Previous</button>
-          <button class="nav-btn nav-next" id="navNext">Next</button>
+          <button class="nav-btn nav-prev" id="navPrev" disabled>PREV</button>
+          <button class="nav-btn nav-next" id="navNext">NEXT</button>
         </nav>
       </main>
     </section>
@@ -81,14 +91,14 @@
     <!-- SCREEN 5 — Motif View -->
     <section id="motif-view" class="screen">
       <header class="motif-view-header">
-        <button class="motif-view-back" id="motifViewBack">← Back</button>
+        <button class="motif-view-back" id="motifViewBack">← BACK</button>
         <h2 class="motif-view-title" id="motifViewTitle"></h2>
       </header>
       <div class="motif-cards" id="motifCards"></div>
     </section>
 
-    <script src="data.js"></script>
-    <script src="chapters.js"></script>
+    <script src="../data.js"></script>
+    <script src="../chapters.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
