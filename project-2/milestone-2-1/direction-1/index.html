@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invisible Cities — Italo Calvino</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Josefin+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- SCREEN 1 — Splash -->
+    <section id="splash" class="screen active">
+      <div class="splash-decoration">* * *</div>
+      <h1 class="splash-title">INVISIBLE CITIES</h1>
+      <p class="splash-author">italo calvino (1972)</p>
+      <p class="splash-translation">~a digital translation~</p>
+      <button class="splash-enter" id="splashEnter">Enter →</button>
+      <blockquote class="splash-quote">"Arriving at each new city, the traveler finds again a past of his that he did not know he had."</blockquote>
+    </section>
+
+    <!-- SCREEN 2 — Chapter Overview -->
+    <section id="chapter-overview" class="screen">
+      <div class="chapter-overview-inner">
+        <h2 class="chapter-overview-title" id="chapterOverviewTitle"></h2>
+        <div class="chapter-overview-text-wrap">
+          <p class="chapter-overview-desc" id="chapterOverviewDesc"></p>
+        </div>
+        <button class="chapter-overview-continue" id="chapterOverviewContinue">Continue →</button>
+        <div class="chapter-overview-decoration">* * *</div>
+      </div>
+    </section>
+
+    <!-- SCREEN 3 — City View -->
+    <section id="city-view" class="screen">
+      <header class="city-header">
+        <button class="city-logo" id="cityLogo" aria-label="Back to splash">*</button>
+        <h2 class="city-header-chapter" id="cityHeaderChapter">Chapter 1</h2>
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+          <span class="menu-toggle-bar"></span>
+          <span class="menu-toggle-bar"></span>
+          <span class="menu-toggle-bar"></span>
+        </button>
+      </header>
+      <main class="city-main">
+        <article class="city-content">
+          <h1 class="city-title" id="cityTitle"></h1>
+          <p class="city-subtitle" id="citySubtitle"></p>
+          <div class="city-icon-wrap">
+            <img class="city-icon" id="cityIcon" src="" alt="" />
+          </div>
+          <div class="city-excerpt-wrap">
+            <p class="city-excerpt" id="cityExcerpt"></p>
+          </div>
+          <div class="motif-section">
+            <p class="motif-label">MOTIFS PRESENT</p>
+            <div class="motif-tags" id="motifTags"></div>
+          </div>
+        </article>
+        <nav class="city-nav">
+          <button class="nav-btn nav-prev" id="navPrev" disabled>Previous</button>
+          <button class="nav-btn nav-next" id="navNext">Next</button>
+        </nav>
+      </main>
+    </section>
+
+    <!-- SCREEN 4 — Navigation Overlay -->
+    <div class="nav-overlay" id="navOverlay" aria-hidden="true">
+      <header class="nav-overlay-header">
+        <button class="city-logo nav-overlay-logo" id="navOverlayLogo" aria-label="Back to splash">*</button>
+        <h2 class="nav-overlay-title" id="navOverlayTitle">Invisible Cities</h2>
+        <button class="menu-close" id="menuClose" aria-label="Close menu">×</button>
+      </header>
+      <nav class="nav-overlay-list" id="navOverlayList"></nav>
+    </div>
+
+    <!-- SCREEN 5 — Motif View -->
+    <section id="motif-view" class="screen">
+      <header class="motif-view-header">
+        <button class="motif-view-back" id="motifViewBack">← Back</button>
+        <h2 class="motif-view-title" id="motifViewTitle"></h2>
+      </header>
+      <div class="motif-cards" id="motifCards"></div>
+    </section>
+
+    <script src="data.js"></script>
+    <script src="chapters.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
