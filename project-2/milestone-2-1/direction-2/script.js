@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  const ICON_BASE = "../../../assets/images/project-2/";
+  const ICON_BASE = "../../../assets/images/project-2/abstract-icons/";
   const cities = (window.WANDERER_DATA && window.WANDERER_DATA.cities) || [];
 
   const els = {
