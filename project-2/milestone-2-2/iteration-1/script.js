@@ -2,7 +2,7 @@
   "use strict";
 
   const FALLBACK_GRADIENT = { start: "#E8E8E8", end: "#4A4A4A" };
-  const ICON_BASE = "../../assets/images/project-2/";
+  const ICON_BASE = "../../../assets/images/project-2/";
 
   let cities = (window.WANDERER_DATA && window.WANDERER_DATA.cities) || [];
   let chapters = (window.WANDERER_CHAPTERS && window.WANDERER_CHAPTERS.chapters) || [];
