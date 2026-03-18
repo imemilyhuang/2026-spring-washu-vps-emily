@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:wght@300&display=swap" rel="stylesheet" />
     <style>
-      * { box-sizing: border-box; }
+      * { box-sizing: border-box; padding: 0; margin: 0; }
       body {
         margin: 0;
         min-height: 100vh;
@@ -27,6 +27,7 @@
         font-weight: 600;
         font-size: clamp(1.8rem, 4vw, 2.5rem);
         letter-spacing: 0.15em;
+        padding: 1rem 0;
       }
       .links {
         margin-top: 4rem;
@@ -38,9 +39,9 @@
         text-align: center;
       }
       .links a {
-        font-size: 1rem;
+        font-size: clamp(0.8rem, 2vw, 0.9rem);
+        padding: 0.5rem 1rem;
         letter-spacing: 0.1em;
-        padding: 0.75rem 1.5rem;
         background: rgba(255, 255, 255, 0.15);
         border: 1px solid rgba(255, 255, 255, 0.35);
         color: #fff;
@@ -51,14 +52,15 @@
         background: rgba(255, 255, 255, 0.25);
         border-color: rgba(255, 255, 255, 0.5);
       }
-      p { margin: 0 0 1.5rem; color: rgba(255,255,255,0.8); font-size: 0.9rem; }
+      p { color: rgba(255,255,255,0.8); font-size: 0.9rem; }
+      .milestone { margin-top: 2rem; }
     </style>
   </head>
   <body>
     <p>italo calvino (1972)</p>
     <h1>INVISIBLE CITIES</h1>
     <p><em>a digital translation</em></p>
-    <p>Milestone 2.2, Direction 1</p>
+    <p class="milestone">Milestone 2.2, Direction 1</p>
     <div class="links">
       <a href="https://www.figma.com/deck/7vqEuRKOtj5fTvl535BkHM">
         Wireframes
