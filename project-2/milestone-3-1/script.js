@@ -9,12 +9,12 @@
   let currentIndex = 0;
   let currentChapterId = 1;
   let motifMap = {};
-  let openAccordionId = null;
-  let slideDirection = null; // 'left' | 'right' for city view transition
-  let navHistory = []; // stack of () => void — push when going forward, pop when pressing back
-  let currentMotifName = null; // tracks which motif view is active
-  let currentThemeName = null; // tracks which theme view is active
-  let cityNavContext = null; // { type: 'motif'|'theme', name, indices: number[] } or null for full list
+  let slideDirection = null;
+  let navHistory = [];
+  let currentMotifName = null;
+  let currentThemeName = null;
+  let cityNavContext = null;
+  let currentScreen = "splash";
 
   function getCurrentScreenFn() {
     if (els.cityView && els.cityView.classList.contains("active")) {
@@ -132,6 +132,7 @@
   }
 
   function showSplash() {
+    currentScreen = "splash";
     navHistory = [];
     showScreen("splash");
     document.body.classList.remove("nav-open");
@@ -146,6 +147,7 @@
   }
 
   function showChapterOverview(chapter, targetIndex) {
+    currentScreen = "chapter-overview";
     navHistory = [];
     cityNavContext = null;
     currentChapterId = chapter ? chapter.id : 1;
@@ -274,6 +276,7 @@
   }
 
   function showCityView() {
+    currentScreen = "city-view";
     const city = cities[currentIndex];
     if (!city) return;
 
@@ -592,6 +595,7 @@
   }
 
   function showAboutView() {
+    currentScreen = "about";
     renderBreadcrumb(els.aboutViewBreadcrumb, [
       { text: "Invisible Cities", onClick: showSplash },
       { text: "About" }
@@ -722,7 +726,6 @@
 
   function renderNavOverlay() {
     els.navOverlayList.innerHTML = "";
-    openAccordionId = null;
 
     chapters.forEach((chapter) => {
       const accordion = document.createElement("div");
@@ -912,6 +915,27 @@
     }
   }
 
+  function backFromChapterOverviewGesture() {
+    if (currentChapterId <= 1) {
+      showSplash();
+      return;
+    }
+    const prevCh = getChapterById(currentChapterId - 1);
+    const refs = prevCh.cities || [];
+    const lastRef = refs.length > 0 ? refs[refs.length - 1] : null;
+    if (!lastRef) {
+      showSplash();
+      return;
+    }
+    const idx = cities.findIndex((c) => c.id === lastRef.id);
+    if (idx < 0) {
+      showSplash();
+      return;
+    }
+    currentIndex = idx;
+    showCityView();
+  }
+
   function init() {
     buildMotifMap();
     showSplash();
@@ -1001,11 +1025,14 @@
       if (e.target && (e.target.closest("input") || e.target.closest("textarea"))) return;
       if (e.key === "Enter" && els.splash && els.splash.classList.contains("active")) proceedFromSplash();
       if (e.key === "Escape" && els.navOverlay.classList.contains("open")) { closeNavOverlay(); return; }
-      if (els.chapterOverview && els.chapterOverview.classList.contains("active")) {
-        if (e.key === "ArrowLeft") { e.preventDefault(); chapterPrev(); return; }
+      if (currentScreen === "chapter-overview") {
+        if (e.key === "ArrowLeft") { e.preventDefault(); backFromChapterOverviewGesture(); return; }
         if (e.key === "ArrowRight") { e.preventDefault(); els.chapterOverviewContinue && els.chapterOverviewContinue.click(); return; }
       }
-      if (els.cityView && els.cityView.classList.contains("active")) {
+      if (currentScreen === "about") {
+        if (e.key === "ArrowLeft") { e.preventDefault(); goBack(); return; }
+      }
+      if (currentScreen === "city-view") {
         if (e.key === "ArrowLeft") { e.preventDefault(); goPrev(); return; }
         if (e.key === "ArrowRight") { e.preventDefault(); goNext(); return; }
       }
@@ -1022,10 +1049,13 @@
       const dx = e.changedTouches[0].clientX - touchStartX;
       const dy = e.changedTouches[0].clientY - touchStartY;
       if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
-      if (els.cityView && els.cityView.classList.contains("active")) {
+      if (currentScreen === "city-view") {
         if (dx < 0) { goNext(); } else { goPrev(); }
-      } else if (els.chapterOverview && els.chapterOverview.classList.contains("active")) {
-        if (dx < 0) { els.chapterOverviewContinue && els.chapterOverviewContinue.click(); } else { chapterPrev(); }
+      } else if (currentScreen === "chapter-overview") {
+        if (dx < 0) { els.chapterOverviewContinue && els.chapterOverviewContinue.click(); }
+        else { backFromChapterOverviewGesture(); }
+      } else if (currentScreen === "about") {
+        if (dx > 0) { goBack(); }
       }
     }, { passive: true });
   }

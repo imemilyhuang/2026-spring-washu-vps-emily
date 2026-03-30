@@ -353,6 +353,7 @@ body.nav-open { overflow: hidden; }
   min-height: 100vh;
   min-height: 100dvh;
   overflow-y: auto;
+  touch-action: pan-y;
   background: linear-gradient(180deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
   color: #fff;
 }
@@ -511,6 +512,7 @@ body.nav-open { overflow: hidden; }
   flex: 1;
   min-height: 0;
   overflow-y: auto;
+  touch-action: pan-y;
 }
 
 #city-view .city-header {
