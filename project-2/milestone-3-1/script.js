@@ -482,16 +482,10 @@
     themes.forEach((themeName) => {
       const themeCities = getCitiesForTheme(themeName);
       if (themeCities.length === 0) return;
-      const firstCity = themeCities[0];
-      const iconSrc = firstCity.icon ? ICON_BASE + firstCity.icon : "";
-      const iconHtml = iconSrc
-        ? `<img class="motif-card-icon" src="${escapeHtml(iconSrc)}" alt="" onerror="this.style.display='none'" />`
-        : "";
       const card = document.createElement("button");
       card.type = "button";
       card.className = "motif-card";
       card.innerHTML = `
-        ${iconHtml}
         <div class="motif-card-title">${themeCardTitleHtml(themeName)}</div>
         <p class="motif-card-quote splash-quote">${themeCities.length} cities</p>
       `;
