@@ -811,6 +811,13 @@ body.nav-open { overflow: hidden; }
 
 #city-view .motif-label { color: rgba(255, 255, 255, 0.85); }
 
+.city-section-line {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  margin: 1.5rem 0;
+}
+
+
 .motif-tags {
   display: flex;
   flex-wrap: wrap;
@@ -1204,6 +1211,15 @@ body.nav-open { overflow: hidden; }
   padding: 0.4rem 0.6rem;
   cursor: pointer;
   color: #fff;
+}
+
+.motif-view-menu-toggle {
+  flex-shrink: 0;
+  color: #fff;
+}
+
+.motif-view-menu-toggle:hover {
+  opacity: 0.85;
 }
 
 .motif-view-back:hover {

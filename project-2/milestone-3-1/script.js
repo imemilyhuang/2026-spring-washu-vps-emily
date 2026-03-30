@@ -86,6 +86,7 @@
     allMotifsCards: document.getElementById("allMotifsCards"),
     allCitiesView: document.getElementById("all-cities-view"),
     allCitiesViewBack: document.getElementById("allCitiesViewBack"),
+    allCitiesViewMenuToggle: document.getElementById("allCitiesViewMenuToggle"),
     allCitiesCards: document.getElementById("allCitiesCards"),
     aboutView: document.getElementById("about-view"),
     aboutViewBack: document.getElementById("aboutViewBack"),
@@ -318,6 +319,14 @@
       els.cityIcon.onerror = () => { els.cityIcon.style.display = "none"; };
     } else if (els.cityIcon) {
       els.cityIcon.style.display = "none";
+    }
+
+    const allCitiesBtn = document.getElementById("allCitiesBtn");
+    if (allCitiesBtn) {
+      allCitiesBtn.onclick = () => {
+        navHistory.push(() => { cityNavContext = null; showCityView(); });
+        showAllCitiesView();
+      };
     }
 
     els.motifTags.innerHTML = "";
@@ -952,6 +961,7 @@
 
     els.menuToggle.addEventListener("click", openNavOverlay);
     if (els.chapterOverviewMenuToggle) els.chapterOverviewMenuToggle.addEventListener("click", openNavOverlay);
+    document.querySelectorAll(".motif-view-menu-toggle").forEach((btn) => btn.addEventListener("click", openNavOverlay));
     els.menuClose.addEventListener("click", closeNavOverlay);
 
     els.navPrev.addEventListener("click", goPrev);
@@ -990,6 +1000,24 @@
         if (e.key === "ArrowRight") { e.preventDefault(); goNext(); return; }
       }
     });
+
+    let touchStartX = 0;
+    let touchStartY = 0;
+    document.addEventListener("touchstart", (e) => {
+      touchStartX = e.changedTouches[0].clientX;
+      touchStartY = e.changedTouches[0].clientY;
+    }, { passive: true });
+    document.addEventListener("touchend", (e) => {
+      if (els.navOverlay.classList.contains("open")) return;
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      const dy = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
+      if (els.cityView && els.cityView.classList.contains("active")) {
+        if (dx < 0) { goNext(); } else { goPrev(); }
+      } else if (els.chapterOverview && els.chapterOverview.classList.contains("active")) {
+        if (dx < 0) { els.chapterOverviewContinue && els.chapterOverviewContinue.click(); } else { chapterPrev(); }
+      }
+    }, { passive: true });
   }
 
   if (document.readyState === "loading") {
