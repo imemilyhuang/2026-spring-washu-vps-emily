@@ -86,6 +86,7 @@
     allMotifsCards: document.getElementById("allMotifsCards"),
     allCitiesView: document.getElementById("all-cities-view"),
     allCitiesViewBack: document.getElementById("allCitiesViewBack"),
+    allCitiesViewBreadcrumb: document.getElementById("allCitiesViewBreadcrumb"),
     allCitiesViewMenuToggle: document.getElementById("allCitiesViewMenuToggle"),
     allCitiesCards: document.getElementById("allCitiesCards"),
     aboutView: document.getElementById("about-view"),
@@ -544,6 +545,21 @@
   }
 
   function showAllCitiesView() {
+    if (els.allCitiesViewBreadcrumb) {
+      els.allCitiesViewBreadcrumb.innerHTML = "";
+      const homeBtn = document.createElement("button");
+      homeBtn.type = "button";
+      homeBtn.className = "breadcrumb-link";
+      homeBtn.textContent = "Invisible Cities";
+      homeBtn.addEventListener("click", (e) => { e.preventDefault(); showSplash(); });
+      const current = document.createElement("span");
+      current.className = "breadcrumb-current";
+      current.textContent = "All Cities";
+      els.allCitiesViewBreadcrumb.appendChild(homeBtn);
+      els.allCitiesViewBreadcrumb.appendChild(document.createTextNode(" / "));
+      els.allCitiesViewBreadcrumb.appendChild(current);
+    }
+
     els.allCitiesCards.innerHTML = "";
     cities.forEach((cityData) => {
       const subtitle = cityData.subtitle || "";
