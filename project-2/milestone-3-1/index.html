@@ -81,10 +81,6 @@
 
           <div class="city-excerpt-wrap">
             <p class="city-excerpt" id="cityExcerpt"></p>
-            <!-- <div class="city-bottom-nav">
-              <button type="button" class="splash-enter city-bottom-nav-btn" id="cityBottomNavPrev" aria-label="Previous city">◀ PREV</button>
-              <button type="button" class="splash-enter city-bottom-nav-btn" id="cityBottomNavNext" aria-label="Next city">NEXT ▶</button>
-            </div> -->
             <div class="city-section-divider" aria-hidden="true"><span class="city-section-divider-asterisk">*</span></div>
             <div class="motif-section">
               <p class="motif-label">MOTIFS PRESENT</p>
@@ -154,6 +150,65 @@
         <h2 class="motif-view-title">All Cities</h2>
       </header>
       <div class="motif-cards" id="allCitiesCards"></div>
+    </section>
+
+    <!-- SCREEN 10 — About -->
+    <section id="about-view" class="screen">
+      <header class="about-header city-header">
+        <div class="city-header-inner">
+          <button class="motif-view-back" id="aboutViewBack" aria-label="Back">◀</button>
+          <nav class="breadcrumb motif-view-breadcrumb" id="aboutViewBreadcrumb" aria-label="Breadcrumb"></nav>
+          <div style="width:1.25rem"></div>
+        </div>
+      </header>
+      <div class="about-content">
+        <div class="about-inner">
+
+          <div class="about-decoration">* * *</div>
+          <h1 class="about-title">Invisible Cities</h1>
+          <p class="about-byline">Italo Calvino, 1972</p>
+
+          <div class="about-section">
+            <p class="about-body"><em>Invisible Cities</em> is one of the most beloved works of twentieth-century literature. Written by Italo Calvino and published in 1972, it is structured as a series of conversations between the aging Emperor Kublai Khan and the young Venetian explorer Marco Polo.</p>
+            <p class="about-body">To entertain the Emperor, Marco Polo describes a series of 55 imaginary cities, each given a woman's name. These cities are grouped into thematic sections: Cities &amp; Memory, Cities &amp; Desire, Cities &amp; Signs, Thin Cities, Trading Cities, Cities &amp; Eyes, Cities &amp; Names, Hidden Cities, and Continuous Cities.</p>
+            <p class="about-body">However, <em>Invisible Cities</em> is not a novel in the traditional sense, as there is no plot or central character arc. Instead, the book shows us how we remember, what we long for, how we communicate, and whether we can ever truly know the complexities of the empires we build or the lives we live.</p>
+          </div>
+
+          <div class="about-divider"></div>
+
+          <div class="about-section">
+            <p class="about-body">This website is a translation of Italo Calvino's <em>Invisible Cities</em> into the language of the web. It presents a curated selection of 25 cities from the original 55, one at a time. You move through the sequence forward or backward, or jump to any city from the menu. The interface recedes, letting Calvino's prose take center stage. To understand the bigger picture, each city links themes and motifs to other related cities, which you can browse and find patterns in.</p>
+          </div>
+
+          <div class="about-divider"></div>
+
+          <div class="about-credits">
+            <div class="about-credit-row">
+              <span class="about-credit-label">Original Text</span>
+              <span class="about-credit-value">Italo Calvino, <em>Le città invisibili</em> (1972)<br>English translation by William Weaver</span>
+            </div>
+            <div class="about-credit-row">
+              <span class="about-credit-label">Design &amp; Development</span>
+              <span class="about-credit-value">Emily Huang</span>
+            </div>
+            <div class="about-credit-row">
+              <span class="about-credit-label">Course</span>
+              <span class="about-credit-value">Visual Principles for the Screen<br>Washington University in St. Louis<br>March 30th, 2026</span>
+            </div>
+          </div>
+
+          <div class="about-divider"></div>
+
+          <div class="about-book-wrap">
+            <a class="about-book-link" href="https://www.amazon.com/Invisible-Cities-Anniversary-Italo-Calvino/dp/0063417626/" target="_blank" rel="noopener">
+              <img class="about-book-cover" src="../../assets/images/project-2/invisible-cities-book-cover.png" alt="Invisible Cities book cover" />
+              <span class="about-book-cta">Buy and read the complete book on Amazon →</span>
+            </a>
+          </div>
+
+          <button type="button" class="splash-enter about-restart-btn" id="aboutRestartBtn">RESTART READING →</button>
+        </div>
+      </div>
     </section>
 
     <script src="data.js"></script>

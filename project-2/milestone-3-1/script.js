@@ -87,6 +87,10 @@
     allCitiesView: document.getElementById("all-cities-view"),
     allCitiesViewBack: document.getElementById("allCitiesViewBack"),
     allCitiesCards: document.getElementById("allCitiesCards"),
+    aboutView: document.getElementById("about-view"),
+    aboutViewBack: document.getElementById("aboutViewBack"),
+    aboutViewBreadcrumb: document.getElementById("aboutViewBreadcrumb"),
+    aboutRestartBtn: document.getElementById("aboutRestartBtn"),
   };
 
   function motifName(m) {
@@ -167,10 +171,11 @@
     }
 
     if (els.chapterOverviewContinue) {
-      els.chapterOverviewContinue.textContent = isEnd ? "RESTART →" : "CONTINUE TO CITIES →";
+      els.chapterOverviewContinue.textContent = isEnd ? "ABOUT THIS PROJECT →" : "CONTINUE TO CITIES →";
       els.chapterOverviewContinue.onclick = () => {
         if (isEnd) {
-          showSplash();
+          navHistory.push(() => showChapterOverview(getChapterById(5) || chapters[chapters.length - 1]));
+          showAboutView();
           return;
         }
         if (typeof targetIndex === "number" && targetIndex >= 0) {
@@ -567,6 +572,20 @@
     }
   }
 
+  function showAboutView() {
+    renderBreadcrumb(els.aboutViewBreadcrumb, [
+      { text: "Invisible Cities", onClick: showSplash },
+      { text: "About" }
+    ]);
+    showScreen("about-view");
+    if (els.aboutView) {
+      els.aboutView.classList.remove("motif-view-fade-in");
+      void els.aboutView.offsetWidth;
+      els.aboutView.classList.add("motif-view-fade-in");
+      setTimeout(() => els.aboutView.classList.remove("motif-view-fade-in"), 320);
+    }
+  }
+
   function showThemeView(themeNameParam) {
     const themeName = themeNameParam || (cities[currentIndex] && getThemeFromSubtitle(cities[currentIndex].subtitle));
     if (!themeName) return;
@@ -787,6 +806,18 @@
     });
     indexBtnsWrap.appendChild(allMotifsBtn);
 
+    const aboutBtn = document.createElement("button");
+    aboutBtn.type = "button";
+    aboutBtn.className = "nav-all-cities-btn nav-index-btn";
+    aboutBtn.textContent = "About this project →";
+    aboutBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      navHistory.push(getCurrentScreenFn());
+      showAboutView();
+      closeNavOverlay();
+    });
+    indexBtnsWrap.appendChild(aboutBtn);
+
     els.navOverlayList.appendChild(indexBtnsWrap);
   }
 
@@ -943,11 +974,17 @@
       const ch = currentChapterId === 5 ? chapters[0] : getChapterById(currentChapterId);
       showChapterOverview(ch || chapters[0]);
     });
+    els.aboutViewBack.addEventListener("click", goBack);
+    if (els.aboutRestartBtn) els.aboutRestartBtn.addEventListener("click", showSplash);
 
     document.addEventListener("keydown", (e) => {
       if (e.target && (e.target.closest("input") || e.target.closest("textarea"))) return;
       if (e.key === "Enter" && els.splash && els.splash.classList.contains("active")) proceedFromSplash();
       if (e.key === "Escape" && els.navOverlay.classList.contains("open")) { closeNavOverlay(); return; }
+      if (els.chapterOverview && els.chapterOverview.classList.contains("active")) {
+        if (e.key === "ArrowLeft") { e.preventDefault(); chapterPrev(); return; }
+        if (e.key === "ArrowRight") { e.preventDefault(); els.chapterOverviewContinue && els.chapterOverviewContinue.click(); return; }
+      }
       if (els.cityView && els.cityView.classList.contains("active")) {
         if (e.key === "ArrowLeft") { e.preventDefault(); goPrev(); return; }
         if (e.key === "ArrowRight") { e.preventDefault(); goNext(); return; }
