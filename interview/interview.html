@@ -1,0 +1,800 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Interviews with Bear Studios Consultants</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background:
+          radial-gradient(1200px 700px at 10% -10%, rgba(34, 197, 94, 0.2), transparent 60%),
+          radial-gradient(1100px 600px at 110% 0%, rgba(16, 185, 129, 0.18), transparent 55%),
+          radial-gradient(900px 600px at 50% 110%, rgba(21, 128, 61, 0.1), transparent 60%), #f3faf6;
+        font-family: "Inter", sans-serif;
+        color: #0f2417;
+        line-height: 1.5;
+        padding: 2rem 1rem;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      /* header */
+      .interview-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .interview-header h1 {
+        font-size: 2.2rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        background: linear-gradient(135deg, #0f5e3a, #167c4c);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        margin-bottom: 0.5rem;
+      }
+
+      .interview-header p {
+        color: #2f4a3b;
+        font-size: 1rem;
+        border-top: 1px solid #d6eadf;
+        display: inline-block;
+        padding-top: 0.75rem;
+        background: rgba(255, 255, 255, 0.35);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding-left: 0.9rem;
+        padding-right: 0.9rem;
+      }
+
+      /* Bear Studios intro */
+      .studio-intro {
+        background: rgba(255, 255, 255, 0.58);
+        border: 1px solid rgba(15, 106, 64, 0.16);
+        border-radius: 1.5rem;
+        box-shadow: 0 16px 40px rgba(2, 44, 23, 0.08);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        padding: 1.25rem 1.5rem;
+        margin: 0 0 3rem;
+        max-width: none;
+      }
+
+      .studio-intro-top {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .studio-logo {
+        height: 80px;
+        width: 80px;
+        object-fit: contain;
+        flex: 0 0 auto;
+        margin-top: 0.15rem;
+      }
+
+      .studio-intro-text {
+        min-width: 0;
+      }
+
+      .studio-intro h2 {
+        font-size: 1.05rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        color: #0b3d25;
+        margin: 0 0 0.35rem;
+      }
+
+      .studio-intro p {
+        color: #214334;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        text-align: left;
+        margin: 0;
+      }
+
+      .studio-intro-links {
+        margin-top: 0.6rem;
+      }
+
+      .studio-intro a {
+        color: #0f6a40;
+        font-weight: 600;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(15, 106, 64, 0.35);
+      }
+
+      .studio-intro a:hover {
+        border-bottom-color: rgba(15, 106, 64, 0.9);
+      }
+
+      /* section headings (full-width + sticky) */
+      .section-heading {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        width: 100vw;
+        margin: 0 0 1.25rem;
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
+        padding: 0.85rem 1rem;
+        background: rgba(255, 255, 255, 0.7);
+        border-top: 1px solid rgba(15, 106, 64, 0.14);
+        border-bottom: 1px solid rgba(15, 106, 64, 0.14);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+      }
+
+      .section-heading-inner {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 0.25rem;
+      }
+
+      .section-heading h2 {
+        font-size: 1.05rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        color: #0b3d25;
+        margin: 0;
+      }
+
+      .page-section {
+        scroll-margin-top: 72px;
+      }
+
+      /* profiles row */
+      .profiles-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: center;
+        margin-bottom: 3rem;
+      }
+
+      .profile-card {
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 1.5rem;
+        padding: 1.5rem 2rem;
+        flex: 1;
+        min-width: 260px;
+        box-shadow: 0 18px 44px rgba(2, 44, 23, 0.1);
+        border: 1px solid rgba(15, 106, 64, 0.14);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        transition: none;
+      }
+
+      .profile-top {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 0.9rem;
+      }
+
+      .profile-photo {
+        width: 84px;
+        height: 84px;
+        border-radius: 999px;
+        object-fit: cover;
+        flex: 0 0 auto;
+        border: 1px solid rgba(15, 106, 64, 0.2);
+        box-shadow: 0 10px 18px rgba(0, 0, 0, 0.06);
+        background: #eaf6ef;
+      }
+
+      .profile-top-text {
+        min-width: 0;
+      }
+
+      .profile-name {
+        font-size: 1.6rem;
+        font-weight: 700;
+        letter-spacing: -0.3px;
+        margin-bottom: 0.25rem;
+      }
+
+      .profile-badge {
+        display: inline-block;
+        background: rgba(16, 185, 129, 0.14);
+        color: #0b3d25;
+        font-size: 0.7rem;
+        font-weight: 600;
+        padding: 0.2rem 0.7rem;
+        margin-bottom: 0.75rem;
+        border: 1px solid rgba(15, 106, 64, 0.14);
+        border-radius: 30px;
+      }
+
+      .profile-details {
+        color: #2b4a3a;
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .addl-role-text {
+        color: #2b4a3a;
+        font-size: 0.9rem;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .profile-role {
+        font-weight: 600;
+        color: #0b3d25;
+        margin-top: 1rem;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .profile-desc {
+        font-size: 0.9rem;
+        color: #214334;
+        margin-top: 0.5rem;
+        border-left: 3px solid #bfe3cf;
+        padding-left: 0.75rem;
+      }
+
+      .profile-desc ul {
+        margin: 0.25rem 0 0;
+        padding-left: 1.1rem;
+      }
+
+      .profile-desc li {
+        margin: 0.25rem 0;
+      }
+
+      /* question block */
+      .question-block {
+        margin-bottom: 3rem;
+        background: rgba(255, 255, 255, 0.82);
+        border: 1px solid rgba(15, 106, 64, 0.14);
+        border-radius: 1.5rem;
+        overflow: hidden;
+        box-shadow: 0 18px 44px rgba(2, 44, 23, 0.1);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+      }
+
+      .question-header {
+        background: rgba(255, 255, 255, 0.88);
+        padding: 1.25rem 2rem;
+        border-bottom: 1px solid #e2efe8;
+      }
+
+      .question-header h2 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #0f6a40;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .question-header h2:before {
+        content: "?";
+        width: 26px;
+        height: 26px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        font-weight: 700;
+        color: #0f6a40;
+        background: rgba(16, 185, 129, 0.12);
+        border: 1px solid rgba(15, 106, 64, 0.18);
+        border-radius: 999px;
+      }
+
+      .two-col {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .col {
+        flex: 1;
+        padding: 1.8rem 2rem;
+        background: rgba(255, 255, 255, 0.62);
+        transition: background 0.1s ease;
+      }
+
+      .col:first-child {
+        border-right: 1px solid #e2efe8;
+      }
+
+      .speaker {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+        font-size: 1.1rem;
+      }
+
+      .speaker .avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: #0f6a40;
+        object-fit: cover;
+        border: 1px solid rgba(15, 106, 64, 0.2);
+        background: rgba(234, 246, 239, 0.75);
+      }
+
+      .speaker-name {
+        color: #0f2417;
+      }
+
+      .answer-text {
+        color: #183525;
+        font-size: 0.98rem;
+        line-height: 1.55;
+      }
+
+      .answer-text a.project-link {
+        color: #0f6a40;
+        font-weight: 700;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(15, 106, 64, 0.55);
+      }
+
+      .answer-text a.project-link:hover {
+        border-bottom-color: rgba(15, 106, 64, 0.95);
+      }
+
+      .answer-text p {
+        margin-bottom: 1rem;
+      }
+
+      .answer-text strong {
+        color: #0f3b5c;
+        font-weight: 600;
+      }
+
+      .extra-note {
+        background: #fefce8;
+        border-left: 4px solid #eab308;
+        padding: 0.9rem 1.2rem;
+        margin-top: 1rem;
+        font-size: 0.9rem;
+        border-radius: 0.75rem;
+        color: #3b3a1c;
+      }
+
+      .footnote {
+        text-align: center;
+        margin-top: 2.5rem;
+        font-size: 0.75rem;
+        color: #456556;
+        border-top: 1px solid #d6eadf;
+        padding-top: 2rem;
+      }
+
+      @media (max-width: 780px) {
+        .col:first-child {
+          border-right: 0;
+          border-bottom: 1px solid #e2efe8;
+        }
+        .col {
+          padding: 1.5rem;
+        }
+        .question-header {
+          padding: 1rem 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="interview-header">
+        <h1>Interview with Bear Studios Consultants</h1>
+        <p>Visual Principles for the Screen</p>
+      </div>
+
+      <section class="page-section" id="about-interviewees">
+        <div class="section-heading">
+          <div class="section-heading-inner">
+            <h2>About the Interviewees</h2>
+          </div>
+        </div>
+
+        <!-- profiles -->
+        <div class="profiles-row">
+          <div class="profile-card">
+            <div class="profile-top">
+              <img class="profile-photo" src="lydia.png" alt="Profile photo of Lydia Park" />
+              <div class="profile-top-text">
+                <div class="profile-name">Lydia Park</div>
+                <div class="profile-badge">Sophomore · Class of 2028</div>
+              </div>
+            </div>
+            <div class="profile-details">Studying Communication Design with a Minor in HCI</div>
+            <div class="profile-role">Design Consultant @ Bear Studios</div>
+            <div class="addl-role-text">Additional Roles:</div>
+            <div class="profile-desc">
+              <ul>
+                <li>VP of Product Design at Product Space @ WashU</li>
+                <li>UI/UX Intern at Skandalaris Center</li>
+              </ul>
+            </div>
+          </div>
+          <div class="profile-card">
+            <div class="profile-top">
+              <img class="profile-photo" src="lily.png" alt="Profile photo of Lily Sun" />
+              <div class="profile-top-text">
+                <div class="profile-name">Lily Sun</div>
+                <div class="profile-badge">Junior · Class of 2027</div>
+              </div>
+            </div>
+            <div class="profile-details">Studying Business & Computer Science with a Minor in HCI</div>
+            <div class="profile-role">Tech Consultant @ Bear Studios</div>
+            <div class="addl-role-text">Additional Roles:</div>
+            <div class="profile-desc">
+              <ul>
+                <li>Software Development Intern at SAS</li>
+                <li>Incoming Associate Consultant Intern at Bain</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-section" id="about-firm">
+        <div class="section-heading">
+          <div class="section-heading-inner">
+            <h2>About the Firm</h2>
+          </div>
+        </div>
+
+        <div class="studio-intro" aria-label="About Bear Studios">
+          <div class="studio-intro-top">
+            <img class="studio-logo" src="bear-studios.png" alt="Bear Studios logo" />
+            <div class="studio-intro-text">
+              <h2>Bear Studios</h2>
+              <p>
+                Bear Studios has completed 150+ projects for 100+ unique clients across industries like
+                consumer goods, education, finance, healthcare and life sciences, non-profits, and software.
+                The firm offers strategy, design, and technology services.
+              </p>
+              <div class="studio-intro-links">
+                <a href="https://www.bearstudios.org/" target="_blank" rel="noopener noreferrer"
+                  >Learn more →</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-section" id="my-connection">
+        <div class="section-heading">
+          <div class="section-heading-inner">
+            <h2>My Connection to Bear Studios</h2>
+          </div>
+        </div>
+
+        <div class="studio-intro" aria-label="My connection to Bear Studios">
+          <p>
+            I've been part of Bear Studios since my freshman fall, where I've worked on 4 full-stack mobile app and website projects.
+            I've been in the role of both a tech consultant and a project manager, and through these project experiences, I've learned
+            a lot about the connection between design and technical implementation, as well as the differences between doing work for
+            class vs. doing real work for clients.
+          </p>
+        </div>
+      </section>
+
+      <section class="page-section" id="interview-portion">
+        <div class="section-heading">
+          <div class="section-heading-inner">
+            <h2>Interview Portion</h2>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-header">
+            <h2>What does good design mean to you?</h2>
+          </div>
+          <div class="two-col">
+            <div class="col">
+              <div class="speaker">
+                <img class="avatar" src="lydia.png" alt="" /><span class="speaker-name"
+                  >Lydia Park · Design</span
+                >
+              </div>
+              <div class="answer-text">
+                <p>
+                  Good design is when the interface makes sense to the user quickly before they have to stop and think.
+                  The visuals should be appealing and guide the user's attention, and the way the user interacts with 
+                  the website should feel expected and intuitive. If a button looks clickable, it should be.
+                </p>
+                <p>
+                  You shouldn't have to explain how to use the website or app to the user when they look at it for the 
+                  first time; they should be able to figure it out on their own. I also think good design respects the 
+                  user. If someone has to second-guess themselves just to finish a simple task, the design is not 
+                  doing its job.
+                </p>
+              </div>
+            </div>
+            <div class="col">
+              <div class="speaker">
+                <img class="avatar" src="lily.png" alt="" /><span class="speaker-name">Lily Sun · Tech</span>
+              </div>
+              <div class="answer-text">
+                <p>
+                  A good design should be intuitive and easy to use, and it should be tailored to the audience. You always 
+                  have to keep the end goal in mind, whether you're making something that is meant to inform a general audience 
+                  or persuade specific people. On the technical side of things, good design should be something that can be 
+                  built and maintained easily, and I like it when the branding is consistent and there are reusable components.
+                  There's a balance between being creative and making something that looks visually appealing vs. making 
+                  something that is usable and works well. 
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-header">
+            <h2>
+              What is your experience in Bear Studios? How is working in the classroom different from working
+              with clients on real projects?
+            </h2>
+          </div>
+          <div class="two-col">
+            <div class="col">
+              <div class="speaker">
+                <img class="avatar" src="lydia.png" alt="" /><span class="speaker-name"
+                  >Lydia Park · Design</span
+                >
+              </div>
+              <div class="answer-text">
+                <p>
+                  At Bear Studios I have worked on
+                  <a
+                    class="project-link"
+                    href="https://chichifoods.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >ChiChi</a
+                  >, and I am currently on Silent Surgical to help with web design and SPARC for Skandy. The biggest
+                  difference compared to class is that the work has real constraints and stakeholders, so any 
+                decisions you make carry more weight.
+                </p>
+                <p>
+                  In the classroom, the assignments are built for learning, and you can take bigger creative risks
+                  because the audience is mostly your professor and other students in the class. With clients, 
+                  you have to understand their goals, preferences, and timeline. They often have a clear vision in mind 
+                  for what they want, and you have to work within those constraints, even though my job as a consultant 
+                  is still to make suggestions and advocate for good design. However, it works best when you first listen 
+                  to what the client wants and then present a few options that fit their comfort level and their needs.
+                </p>
+              </div>
+            </div>
+            <div class="col">
+              <div class="speaker">
+                <img class="avatar" src="lily.png" alt="" /><span class="speaker-name">Lily Sun · Tech</span>
+              </div>
+              <div class="answer-text">
+                <p>
+                  On the tech side, the stakes feel higher because people rely on what you ship. In class you
+                  can say it works on your laptop, but in client work you need something stable, readable, and
+                  easy to maintain for whoever touches it next. You have to be really careful about edge cases and 
+                  do a lot of testing to make sure everything works as expected.
+                </p>
+                <p>
+                  Also, the client will sometimes have a specific platform in mind for the project. For example, on
+                  <a
+                    class="project-link"
+                    href="https://panomebio.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Panome Bio</a
+                  >
+                  we had a website project where the client wanted everything to be in WordPress. The client 
+                  requested some pretty complex scrolling interactions as well, but the WordPress platform is 
+                  built around templates and plugins, and they had existing setup that limited what we could 
+                  do cleanly. Projects like that teach you how to explain trade-offs withoutgetting lost in 
+                  technical details, and how to deliver something the client can actually keep using and updating. 
+                  It's also a good way to practice communicating with the client and understanding their needs and 
+                  constraints without getting lost in technical details.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-header">
+            <h2>How do you balance visual appeal with usability and technical feasibility?</h2>
+          </div>
+          <div class="two-col">
+            <div class="col">
+              <div class="speaker">
+                <img class="avatar" src="lydia.png" alt="" /><span class="speaker-name"
+                  >Lydia Park · Design</span
+                >
+              </div>
+              <div class="answer-text">
+                <p>
+                    As a designer, I think that visual appeal and usability are interconnected, but I'd say I 
+                    always think about usability first and visual appeal second. If something looks 
+                    great but users don't understand how to use it, I treat it as a design problem rather 
+                    than a user problem and consider how I can rework the structure of the interface to 
+                    be more intuitive, and then build the branding and aesthetics around that. I always try to 
+                    keep technical feasibility in mind as well, and I'll go over my designs with developers 
+                    to make sure they can actually build it.
+                </p>
+              </div>
+            </div>
+            <div class="col">
+              <div class="speaker">
+                <img class="avatar" src="lily.png" alt="" /><span class="speaker-name">Lily Sun · Tech</span>
+              </div>
+              <div class="answer-text">
+                <p>
+                  I try to separate the goal from the exact effect. If the goal is that a page should feel
+                  dynamic, we can usually get there without heavy animation or media that slows everything
+                  down.
+                </p>
+                <p>
+                  I have seen designs with lots of unique shadows, custom scroll behavior, and background
+                  video. In one case we replaced the video with a static hero and cut the scroll animation. To
+                  keep the page from feeling flat, we used a lighter fade-in on scroll. It was faster to
+                  build, loaded faster, and still matched the intended vibe.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-header">
+            <h2>What's your favorite Figma feature?</h2>
+          </div>
+          <div class="two-col">
+            <div class="col">
+              <div class="speaker">
+                <img class="avatar" src="lydia.png" alt="" /><span class="speaker-name"
+                  >Lydia Park · Design</span
+                >
+              </div>
+              <div class="answer-text">
+                <p>
+                  Auto layout because it forces me to design in a way that behaves like real UI. 
+                  When text changes or when you resize for mobile, the layout still holds together and 
+                  everything will grow or shrink automatically. You can also nest auto layouts inside 
+                  of each other, which creates a logical hierarchy that mimcs how developers will 
+                  actually build the interface. It's basically like flexbox but for designers.
+                </p>
+              </div>
+            </div>
+            <div class="col">
+              <div class="speaker">
+                <img class="avatar" src="lily.png" alt="" /><span class="speaker-name">Lily Sun · Tech</span>
+              </div>
+              <div class="answer-text">
+                <p>
+                  I really like the prototyping feature in Figma. It helps me get a feel for the app and 
+                  understand how you navigate between screens and how the user interacts with the app. 
+                  You can make components interactive so that when you hover over something like a button, 
+                  it changes color or size. You can also make overlays show up, and you get a lot of control 
+                  over the transitions because designers are able to specify the duration and adjust easing 
+                  curves. Inspecting these properties removes the guesswork when I have to implement a UI.
+                </p>
+                <p>
+                  It also makes client conversations easier because they can click through something real and
+                  give clearer feedback than they can from static mockups.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-header">
+            <h2>How do you explain your work to a client without jargon?</h2>
+          </div>
+          <div class="two-col">
+            <div class="col">
+              <div class="speaker">
+                <img class="avatar" src="lydia.png" alt="" /><span class="speaker-name"
+                  >Lydia Park · Design</span
+                >
+              </div>
+              <div class="answer-text">
+                <p>
+                  We meet with the client and do demos. I show a few options and explain the differences in
+                  plain language, like what people notice first, what action is easiest, and what that means
+                  for the client’s goals.
+                </p>
+                <p>
+                  If I need to explain spacing or hierarchy, I connect it to outcomes like faster scanning,
+                  fewer misclicks, or an overall calmer feel. That tends to land better than using super 
+                  techincal design concepts, and it helps the client feel confident in our work and decisions.
+                </p>
+              </div>
+            </div>
+            <div class="col">
+              <div class="speaker">
+                <img class="avatar" src="lily.png" alt="" /><span class="speaker-name">Lily Sun · Tech</span>
+              </div>
+              <div class="answer-text">
+                <p>
+                  I'd say developers use the same approach as what Lydia just talked about. We meet with the client 
+                  and do demos. I walk through the most current version of the app or website (what's pushed to GitHub) 
+                  and usually split-screen to have my code ready. I'll keep my demo focused on the visuals and other 
+                  things the client cares about, like speed, cost, or privacy concerns. If they're looking for a more 
+                  technical explanation, I can point out which blocks of code translate to which components on the frontend 
+                  or what queries are being made, or what script is needed to make a certain interaction work.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <div class="question-header">
+            <h2>Final takeaways</h2>
+          </div>
+          <div class="two-col">
+            <div class="col">
+              <div class="speaker">
+                <img class="avatar" src="lydia.png" alt="" /><span class="speaker-name"
+                  >Lydia Park · Design</span
+                >
+              </div>
+              <div class="answer-text">
+                <p>
+                  Client work made me more intentional, and I think I have more empathy now as a result of my 
+                  work with Bear Studios. I still care about aesthetics, but I think more about clarity, 
+                  like what the user should notice, what they should do next, and what could confuse them.
+                </p>
+                <p>
+                  If I can't explain a design decision simply to a client, I take that as a sign that I need
+                  to refine it. It usually means the idea is not clear enough yet.
+                </p>
+              </div>
+            </div>
+            <div class="col">
+              <div class="speaker">
+                <img class="avatar" src="lily.png" alt="" /><span class="speaker-name">Lily Sun · Tech</span>
+              </div>
+              <div class="answer-text">
+                <p>
+                    I would say to stay adaptable, and prioritize simple and reliable solutions. I would 
+                    rather ship something consistently works than build something too complex that the client 
+                    can't support after the app/website launches and the project ends. By simplifying 
+                    my solutions, that makes the product easier to maintain and less risky over time, and it 
+                    builds client trust in our work.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="footnote">Interview Conducted by Emily Huangfor Visual Principles for the Screen | Spring 2026</div>
+    </div>
+  </body>
+</html>
